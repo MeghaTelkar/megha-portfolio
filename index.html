@@ -428,6 +428,43 @@ select{width:100%;font:inherit;padding:12px 14px;border:2px solid #d5dbea;border
 .result .btn{justify-self:start;margin-top:10px}
 .faq .dd-body p{margin:0}
 .result[hidden]{display:none}
+/* v-M: motion. One load sequence, one scroll-linked route, motion that answers actions. */
+.hero .brand .m-route{clip-path:inset(0 0 0 0)}
+.hero .brand .m-coin{transform-box:fill-box;transform-origin:center}
+.hero h1,.hero .tagline{will-change:transform,opacity}
+@media (prefers-reduced-motion:no-preference){
+  .js .hero .brand .m-liquid{animation:m-fill 900ms cubic-bezier(.2,.7,.2,1) 150ms both}
+  .js .hero .brand .m-route{animation:m-draw 1100ms cubic-bezier(.6,0,.2,1) 700ms both}
+  .js .hero .brand .m-coin{animation:m-pop 520ms cubic-bezier(.3,1.6,.5,1) 1650ms both}
+  .js .hero .brand .m-rupee{animation:m-fade 300ms ease 2000ms both}
+  .js .hero h1{animation:m-rise 800ms cubic-bezier(.2,.7,.2,1) 250ms both}
+  .js .hero .tagline{animation:m-rise 700ms cubic-bezier(.2,.7,.2,1) 1900ms both}
+  .js .hero .stages,.js .hero .creds{animation:m-fade 700ms ease 2200ms both}
+  .dd[open] .dd-body{animation:m-open 260ms ease both}
+  .result:not([hidden]){animation:m-rise 420ms cubic-bezier(.2,.7,.2,1) both}
+  .result li{animation:m-fade 360ms ease both}
+  .result li:nth-child(2){animation-delay:120ms}.result li:nth-child(3){animation-delay:240ms}
+}
+@keyframes m-fill{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes m-draw{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes m-pop{0%{transform:scale(0)}100%{transform:scale(1)}}
+@keyframes m-rise{from{transform:translateY(18px);opacity:0}to{transform:none;opacity:1}}
+@keyframes m-fade{from{opacity:0}to{opacity:1}}
+@keyframes m-open{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+/* journey route that fills as you scroll */
+.route{position:relative;--p:1}
+.stages::after{content:"";position:absolute;left:8%;top:10px;height:3px;width:calc(84% * var(--p));background:linear-gradient(90deg,var(--mint),var(--gold));border-radius:2px;z-index:0}
+.stages li{z-index:1}
+.stages li::before{transition:background .3s,border-color .3s,box-shadow .3s}
+.stages li.lit::before{background:var(--mint);box-shadow:0 0 0 6px rgba(127,224,194,.18)}
+.stages li.end.lit::before{background:var(--gold);box-shadow:0 0 0 8px rgba(245,184,61,.22)}
+.traveller{position:absolute;z-index:2;left:calc(8% + 84% * var(--p));top:-3px;transform:translateX(-50%);width:30px;height:30px;border-radius:50%;background:var(--gold);color:#0E1726;font-weight:700;font-size:.95rem;display:grid;place-items:center;box-shadow:0 4px 16px rgba(245,184,61,.45);pointer-events:none}
+@media (max-width:860px){
+  .stages::after{left:34px;top:14px;width:3px;height:calc((100% - 28px) * var(--p));background:linear-gradient(180deg,var(--mint),var(--gold))}
+  .traveller{left:36px;top:calc(14px + (100% - 28px) * var(--p));transform:translate(-50%,-50%)}
+}
+@media (prefers-reduced-motion:reduce){.traveller{display:none}}
+
 [data-theme="dark"] .company{background:#0a1530}
 [data-theme="dark"]{--blue:#7FE0C2;--lilac-soft:#14254f}
 .dots button{width:24px;height:24px;border-radius:50%;background:transparent;position:relative}
@@ -479,7 +516,7 @@ footer a:hover{color:var(--gold)}
   <div class="wrap">
     <div class="hero-grid">
     <div class="hero-text">
-    <div class="brand"><svg class="mark" viewBox="0 -8 220 152" aria-hidden="true" focusable="false"><path d="M17 96 H71 L80 120 Q84 136 68 136 H20 Q4 136 8 120 Z" fill="#7FE0C2"/><path d="M24 20 H64 M32 20 V58 L8 120 Q4 136 20 136 H68 Q84 136 80 120 L56 58 V20" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><path d="M44 14 C48 -6 98 0 104 40 C110 80 146 88 164 58" fill="none" stroke="#F5B83D" stroke-width="7" stroke-linecap="round" stroke-dasharray="0.5 13"/><circle cx="192" cy="46" r="25" fill="#F5B83D"/><path transform="translate(184.00 56)" d="M15.025390625 -15.326171875 14.287109375 -12.591796875H0.984375L1.708984375 -15.326171875ZM8.1484375 0.0 1.326171875 -8.1484375 1.3125 -10.58203125H4.703125Q5.8515625 -10.58203125 6.6171875 -10.9990234375Q7.3828125 -11.416015625 7.779296875 -12.140625Q8.17578125 -12.865234375 8.17578125 -13.794921875Q8.17578125 -15.203125 7.3623046875 -16.078125Q6.548828125 -16.953125 4.703125 -16.953125H0.984375L1.8046875 -20.37109375H4.703125Q7.232421875 -20.37109375 8.9140625 -19.60546875Q10.595703125 -18.83984375 11.443359375 -17.4384765625Q12.291015625 -16.037109375 12.291015625 -14.109375Q12.291015625 -12.400390625 11.716796875 -11.1015625Q11.142578125 -9.802734375 9.92578125 -8.955078125Q8.708984375 -8.107421875 6.767578125 -7.73828125L6.6171875 -7.669921875L12.71484375 -0.177734375V0.0ZM15.0390625 -20.37109375 14.287109375 -17.58203125 3.36328125 -17.595703125 4.115234375 -20.37109375Z" fill="#0E1726"/></svg><div><h1>Lab to Lucre</h1><p class="tagline">The way from lab to profit</p></div></div>
+    <div class="brand"><svg class="mark" viewBox="0 -8 220 152" aria-hidden="true" focusable="false"><path d="M17 96 H71 L80 120 Q84 136 68 136 H20 Q4 136 8 120 Z" fill="#7FE0C2" class="m-liquid"/><path d="M24 20 H64 M32 20 V58 L8 120 Q4 136 20 136 H68 Q84 136 80 120 L56 58 V20" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><path d="M44 14 C48 -6 98 0 104 40 C110 80 146 88 164 58" fill="none" stroke="#F5B83D" class="m-route" stroke-width="7" stroke-linecap="round" stroke-dasharray="0.5 13"/><circle cx="192" cy="46" r="25" fill="#F5B83D" class="m-coin"/><path transform="translate(184.00 56)" d="M15.025390625 -15.326171875 14.287109375 -12.591796875H0.984375L1.708984375 -15.326171875ZM8.1484375 0.0 1.326171875 -8.1484375 1.3125 -10.58203125H4.703125Q5.8515625 -10.58203125 6.6171875 -10.9990234375Q7.3828125 -11.416015625 7.779296875 -12.140625Q8.17578125 -12.865234375 8.17578125 -13.794921875Q8.17578125 -15.203125 7.3623046875 -16.078125Q6.548828125 -16.953125 4.703125 -16.953125H0.984375L1.8046875 -20.37109375H4.703125Q7.232421875 -20.37109375 8.9140625 -19.60546875Q10.595703125 -18.83984375 11.443359375 -17.4384765625Q12.291015625 -16.037109375 12.291015625 -14.109375Q12.291015625 -12.400390625 11.716796875 -11.1015625Q11.142578125 -9.802734375 9.92578125 -8.955078125Q8.708984375 -8.107421875 6.767578125 -7.73828125L6.6171875 -7.669921875L12.71484375 -0.177734375V0.0ZM15.0390625 -20.37109375 14.287109375 -17.58203125 3.36328125 -17.595703125 4.115234375 -20.37109375Z" fill="#0E1726" class="m-rupee"/></svg><div><h1>Lab to Lucre</h1><p class="tagline">The way from lab to profit</p></div></div>
     <p class="byline">Megha Telkar, Founder</p>
     <p class="role">Funding strategy, investor readiness and go-to-market for early-stage biotech and technology startups.</p>
     <p class="intro">Most science-led startups stall between a working prototype and a paying customer. Lab to Lucre helps founders cross that gap and raise money on the proof.</p>
@@ -493,7 +530,8 @@ footer a:hover{color:var(--gold)}
     </div>
     <div class="path">
       <p>Where Lab to Lucre works with founders, from the bench to the first cheque:</p>
-      <ol class="stages">
+      <div class="route" id="route"><span class="traveller" aria-hidden="true">&#8377;</span>
+      <ol class="stages" id="stages">
         <li>Ideation</li>
         <li>Product validation</li>
         <li>Incubation</li>
@@ -501,6 +539,7 @@ footer a:hover{color:var(--gold)}
         <li>Scale-up</li>
         <li class="end">Commercialisation</li>
       </ol>
+      </div>
     </div>
     <ul class="creds" aria-label="Founder credentials">
       <li><b>30+ founder events</b> and 20+ investor and grant introductions at Bangalore Bioinnovation Centre</li>
@@ -1013,7 +1052,7 @@ if(q&&q.then){q.then(function(){if(b)b.style.display='none'}).catch(start);}else
     if(missing){note.textContent='Answer all six questions to see your result ('+missing+' left).';return;}
     note.textContent='';
     gaps.sort(function(a,b){return a[0]-b[0]});
-    document.getElementById('qScore').textContent=total;
+    (function(el,to){if(matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=to;return;}var t0=performance.now();(function step(t){var k=Math.min(1,(t-t0)/700);el.textContent=Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step);})(t0);})(document.getElementById('qScore'),total);
     document.getElementById('qBand').textContent= total>=10?'Investor-ready on the basics. Sharpen the story and raise with a plan.': total>=6?'Close, with gaps investors will spot in the first meeting.':'Build proof before you pitch. The fastest wins are below.';
     var ul=document.getElementById('qGaps'); ul.textContent='';
     gaps.slice(0,3).forEach(function(g){var li=document.createElement('li'),b=document.createElement('b');b.textContent=g[1][0]+': ';li.appendChild(b);li.appendChild(document.createTextNode(g[1][1]));ul.appendChild(li);});
@@ -1025,6 +1064,24 @@ if(q&&q.then){q.then(function(){if(b)b.style.display='none'}).catch(start);}else
       var sv=document.querySelector('input[name=svc][value="Investor readiness"]'); if(sv) sv.checked=true;
     };
   });
+})();
+</script>
+<script>
+// journey route: the coin follows your scroll, stages light up as it passes them
+(function(){
+  var ol=document.getElementById('route'); if(!ol) return;
+  var lis=[].slice.call(ol.querySelectorAll('li')), reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function set(p){p=Math.max(0,Math.min(1,p));ol.style.setProperty('--p',p.toFixed(3));lis.forEach(function(li,i){li.classList.toggle('lit',p>=i/(lis.length-1)-0.02)});}
+  if(reduce){set(1);return;}
+  var tick=false;
+  function update(){tick=false;var r=ol.getBoundingClientRect(),vh=innerHeight;set((vh*0.92-r.top)/(vh*0.55));}
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(update)}},{passive:true});
+  addEventListener('resize',update);
+  set(0); setTimeout(function(){
+    // first reveal: run the coin up to where the scroll position puts it
+    var r=ol.getBoundingClientRect(),vh=innerHeight,target=Math.max(0,Math.min(1,(vh*0.92-r.top)/(vh*0.55))),t0=performance.now();
+    (function step(t){var k=Math.min(1,(t-t0)/1200),e=1-Math.pow(1-k,3);set(target*e);if(k<1)requestAnimationFrame(step);})(t0);
+  },2300);
 })();
 </script>
 </body>
