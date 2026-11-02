@@ -382,7 +382,7 @@ select{width:100%;font:inherit;padding:12px 14px;border:2px solid #d5dbea;border
 @media (max-width:860px){
  .hero-grid{display:flex;flex-direction:column;gap:22px;align-items:stretch}
  .hero-text{display:contents}
- .hero-grid .brand{order:1}.hero-grid .byline{order:2}.hero-grid .vid{order:3;max-width:380px;margin:6px auto}
+ .hero-grid .brand{order:1}.hero-grid .rotator{order:2}.hero-grid .byline{order:2}.hero-grid .vid{order:3;max-width:380px;margin:6px auto}
  .hero-grid .role{order:4}.hero-grid .intro{order:5}.hero-grid .btns{order:6}
 }
 
@@ -428,6 +428,65 @@ select{width:100%;font:inherit;padding:12px 14px;border:2px solid #d5dbea;border
 .result .btn{justify-self:start;margin-top:10px}
 .faq .dd-body p{margin:0}
 .result[hidden]{display:none}
+/* v-D: dynamic layer */
+.hero{isolation:isolate}
+.hero-fx{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
+.rotator{margin-top:14px;font-size:clamp(1.05rem,2.2vw,1.35rem);color:#DCE3EC;font-weight:500;display:flex;gap:.45em;align-items:baseline;flex-wrap:wrap}
+.rot{position:relative;display:inline-grid;height:1.5em;overflow:hidden;vertical-align:bottom}
+.rot b{grid-area:1/1;color:var(--gold);font-weight:700;transform:translateY(110%);opacity:0;transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .55s;white-space:nowrap}
+.rot b.on{transform:none;opacity:1}
+.rot b.out{transform:translateY(-110%);opacity:0}
+.kinetic .ch{display:inline-block;will-change:transform}
+.kinetic .sp{display:inline-block;width:.28em}
+/* marquee */
+.marquee{background:var(--gold);color:#0E1726;overflow:hidden;padding:14px 0;border-block:1px solid rgba(14,23,38,.15)}
+.mq-track{display:flex;gap:28px;width:max-content;align-items:center;font-family:var(--serif);font-weight:700;font-size:clamp(1.1rem,2.4vw,1.6rem);white-space:nowrap}
+.mq-track i{font-style:normal;font-family:var(--sans);width:30px;height:30px;border-radius:50%;background:#0E1726;color:var(--gold);display:grid;place-items:center;font-size:.9rem}
+/* numbers */
+.numbers{background:var(--navy);color:#fff;padding:64px 0}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.num b{display:block;font-family:var(--serif);font-size:clamp(2.4rem,5vw,3.6rem);line-height:1;color:var(--gold);font-variant-numeric:tabular-nums;margin-bottom:10px}
+.num span{color:#C9D3DD;font-size:.98rem;line-height:1.45;display:block;max-width:24ch}
+.num{padding-top:18px;border-top:2px solid rgba(127,224,194,.35)}
+@media (max-width:860px){.nums{grid-template-columns:repeat(2,1fr)}}
+/* scroll reveal */
+.rv-words .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em}
+.rv-words .w>span{display:inline-block}
+/* spotlight + tilt cards */
+.fx-card{position:relative;transform-style:preserve-3d;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.fx-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(245,184,61,.22),transparent 60%)}
+.fx-card:hover::after{opacity:1}
+.usp article.fx-card:hover{border-color:rgba(245,184,61,.55)}
+/* magnetic buttons */
+.btn.mag{transition:transform .25s cubic-bezier(.2,.8,.2,1),background .2s,color .2s}
+/* how-it-works steps draw a line */
+.steps{position:relative}
+.steps li{transition:color .4s}
+.steps li::before{transition:transform .5s cubic-bezier(.3,1.6,.5,1),background .4s}
+.steps li.lit-step::before{background:var(--gold);color:#0E1726;transform:scale(1.15)}
+/* slider autoplay progress */
+.sl-progress{position:absolute;left:0;bottom:0;height:4px;width:100%;background:var(--gold);transform-origin:0 50%;transform:scaleX(0);z-index:3}
+/* heading underline sweep */
+.sec-head h2,.company h2,.contact h2,.faq h2{background:linear-gradient(90deg,var(--gold),var(--gold)) no-repeat 0 100%/0% 4px;padding-bottom:8px;transition:background-size 1s cubic-bezier(.2,.8,.2,1)}
+.sweep-on{background-size:72px 4px!important}
+
+@media (prefers-reduced-motion:no-preference){
+  .js .rv{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:var(--rd,0s)}
+  .js .rv.in{opacity:1;transform:none}
+  .js .rv-words .w>span{transform:translateY(105%);transition:transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0) * 55ms)}
+  .js .rv-words.in .w>span{transform:none}
+  .js .kinetic .ch{animation:k-in .9s cubic-bezier(.2,.9,.25,1.15) both;animation-delay:calc(250ms + var(--i) * 45ms)}
+  .mq-track{animation:mq 32s linear infinite}
+  .marquee:hover .mq-track{animation-play-state:paused}
+  .hero .vid{animation:float-y 7s ease-in-out infinite alternate}
+}
+@keyframes k-in{from{transform:translateY(.7em) rotate(6deg);opacity:0;filter:blur(6px)}to{transform:none;opacity:1;filter:none}}
+@keyframes mq{to{transform:translateX(-50%)}}
+@keyframes float-y{from{transform:translateY(0)}to{transform:translateY(-12px)}}
+@media (prefers-reduced-motion:reduce){.hero-fx{display:none}.rot b{transition:none}}
+[data-theme="dark"] .numbers{background:#07122a}
+
 /* v-M: motion. One load sequence, one scroll-linked route, motion that answers actions. */
 .hero .brand .m-route{clip-path:inset(0 0 0 0)}
 .hero .brand .m-coin{transform-box:fill-box;transform-origin:center}
@@ -513,10 +572,12 @@ footer a:hover{color:var(--gold)}
 
 <main id="main" tabindex="-1">
 <section class="hero" id="top">
+  <canvas class="hero-fx" id="heroFx" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="hero-grid">
     <div class="hero-text">
-    <div class="brand"><svg class="mark" viewBox="0 -8 220 152" aria-hidden="true" focusable="false"><path d="M17 96 H71 L80 120 Q84 136 68 136 H20 Q4 136 8 120 Z" fill="#7FE0C2" class="m-liquid"/><path d="M24 20 H64 M32 20 V58 L8 120 Q4 136 20 136 H68 Q84 136 80 120 L56 58 V20" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><path d="M44 14 C48 -6 98 0 104 40 C110 80 146 88 164 58" fill="none" stroke="#F5B83D" class="m-route" stroke-width="7" stroke-linecap="round" stroke-dasharray="0.5 13"/><circle cx="192" cy="46" r="25" fill="#F5B83D" class="m-coin"/><path transform="translate(184.00 56)" d="M15.025390625 -15.326171875 14.287109375 -12.591796875H0.984375L1.708984375 -15.326171875ZM8.1484375 0.0 1.326171875 -8.1484375 1.3125 -10.58203125H4.703125Q5.8515625 -10.58203125 6.6171875 -10.9990234375Q7.3828125 -11.416015625 7.779296875 -12.140625Q8.17578125 -12.865234375 8.17578125 -13.794921875Q8.17578125 -15.203125 7.3623046875 -16.078125Q6.548828125 -16.953125 4.703125 -16.953125H0.984375L1.8046875 -20.37109375H4.703125Q7.232421875 -20.37109375 8.9140625 -19.60546875Q10.595703125 -18.83984375 11.443359375 -17.4384765625Q12.291015625 -16.037109375 12.291015625 -14.109375Q12.291015625 -12.400390625 11.716796875 -11.1015625Q11.142578125 -9.802734375 9.92578125 -8.955078125Q8.708984375 -8.107421875 6.767578125 -7.73828125L6.6171875 -7.669921875L12.71484375 -0.177734375V0.0ZM15.0390625 -20.37109375 14.287109375 -17.58203125 3.36328125 -17.595703125 4.115234375 -20.37109375Z" fill="#0E1726" class="m-rupee"/></svg><div><h1>Lab to Lucre</h1><p class="tagline">The way from lab to profit</p></div></div>
+    <div class="brand"><svg class="mark" viewBox="0 -8 220 152" aria-hidden="true" focusable="false"><path d="M17 96 H71 L80 120 Q84 136 68 136 H20 Q4 136 8 120 Z" fill="#7FE0C2" class="m-liquid"/><path d="M24 20 H64 M32 20 V58 L8 120 Q4 136 20 136 H68 Q84 136 80 120 L56 58 V20" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><path d="M44 14 C48 -6 98 0 104 40 C110 80 146 88 164 58" fill="none" stroke="#F5B83D" class="m-route" stroke-width="7" stroke-linecap="round" stroke-dasharray="0.5 13"/><circle cx="192" cy="46" r="25" fill="#F5B83D" class="m-coin"/><path transform="translate(184.00 56)" d="M15.025390625 -15.326171875 14.287109375 -12.591796875H0.984375L1.708984375 -15.326171875ZM8.1484375 0.0 1.326171875 -8.1484375 1.3125 -10.58203125H4.703125Q5.8515625 -10.58203125 6.6171875 -10.9990234375Q7.3828125 -11.416015625 7.779296875 -12.140625Q8.17578125 -12.865234375 8.17578125 -13.794921875Q8.17578125 -15.203125 7.3623046875 -16.078125Q6.548828125 -16.953125 4.703125 -16.953125H0.984375L1.8046875 -20.37109375H4.703125Q7.232421875 -20.37109375 8.9140625 -19.60546875Q10.595703125 -18.83984375 11.443359375 -17.4384765625Q12.291015625 -16.037109375 12.291015625 -14.109375Q12.291015625 -12.400390625 11.716796875 -11.1015625Q11.142578125 -9.802734375 9.92578125 -8.955078125Q8.708984375 -8.107421875 6.767578125 -7.73828125L6.6171875 -7.669921875L12.71484375 -0.177734375V0.0ZM15.0390625 -20.37109375 14.287109375 -17.58203125 3.36328125 -17.595703125 4.115234375 -20.37109375Z" fill="#0E1726" class="m-rupee"/></svg><div><h1 class="kinetic" aria-label="Lab to Lucre">Lab to Lucre</h1><p class="tagline">The way from lab to profit</p></div></div>
+    <p class="rotator" aria-hidden="true">Get your <span class="rot" id="rot"><b>funding route</b><b>investor-ready pitch</b><b>first paying customer</b><b>90-day plan</b></span></p>
     <p class="byline">Megha Telkar, Founder</p>
     <p class="role">Funding strategy, investor readiness and go-to-market for early-stage biotech and technology startups.</p>
     <p class="intro">Most science-led startups stall between a working prototype and a paying customer. Lab to Lucre helps founders cross that gap and raise money on the proof.</p>
@@ -548,6 +609,20 @@ footer a:hover{color:var(--gold)}
     </ul>
     <div hidden>
     </div>
+  </div>
+</section>
+
+
+<div class="marquee" aria-hidden="true"><div class="mq-track">
+  <span>Biotech</span><i>&#8377;</i><span>MedTech</span><i>&#8377;</i><span>Agri-biotech</span><i>&#8377;</i><span>Life sciences</span><i>&#8377;</i><span>Deep tech</span><i>&#8377;</i><span>Prototype to first customer</span><i>&#8377;</i><span>First customer to first cheque</span><i>&#8377;</i>
+  <span>Biotech</span><i>&#8377;</i><span>MedTech</span><i>&#8377;</i><span>Agri-biotech</span><i>&#8377;</i><span>Life sciences</span><i>&#8377;</i><span>Deep tech</span><i>&#8377;</i><span>Prototype to first customer</span><i>&#8377;</i><span>First customer to first cheque</span><i>&#8377;</i>
+</div></div>
+<section class="numbers" aria-label="Lab to Lucre in numbers">
+  <div class="wrap nums">
+    <div class="num"><b data-count="10000" data-suffix="">0</b><span>startups studied to build the funding playbook</span></div>
+    <div class="num"><b data-count="30" data-suffix="+">0</b><span>founder events run at Bangalore Bioinnovation Centre</span></div>
+    <div class="num"><b data-count="20" data-suffix="+">0</b><span>investor and grant introductions made</span></div>
+    <div class="num"><b data-count="5" data-suffix=" days">0</b><span>to your written readiness report</span></div>
   </div>
 </section>
 
@@ -1082,6 +1157,102 @@ if(q&&q.then){q.then(function(){if(b)b.style.display='none'}).catch(start);}else
     var r=ol.getBoundingClientRect(),vh=innerHeight,target=Math.max(0,Math.min(1,(vh*0.92-r.top)/(vh*0.55))),t0=performance.now();
     (function step(t){var k=Math.min(1,(t-t0)/1200),e=1-Math.pow(1-k,3);set(target*e);if(k<1)requestAnimationFrame(step);})(t0);
   },2300);
+})();
+</script>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer=matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // kinetic hero title (letters stay readable to screen readers via aria-label)
+  var k=document.querySelector('.kinetic');
+  if(k&&!reduce){var txt=k.textContent;k.textContent='';[].forEach.call(txt,function(c,i){var sp=document.createElement('span');sp.setAttribute('aria-hidden','true');if(c===' '){sp.className='sp';}else{sp.className='ch';sp.textContent=c;sp.style.setProperty('--i',i);}k.appendChild(sp);});}
+
+  // rotating focus words
+  var rot=document.getElementById('rot');
+  if(rot){var bs=rot.querySelectorAll('b'),ri=0;bs[0].classList.add('on');
+    // size the box to the widest word
+    var w=0;[].forEach.call(bs,function(b){w=Math.max(w,b.scrollWidth)});rot.style.width=w+'px';
+    if(!reduce)setInterval(function(){var cur=bs[ri];cur.classList.remove('on');cur.classList.add('out');ri=(ri+1)%bs.length;var nx=bs[ri];nx.classList.remove('out');void nx.offsetWidth;nx.classList.add('on');setTimeout(function(){cur.classList.remove('out')},600);},2200);}
+
+  // live hero background: mint lab particles drift right and turn into gold coins
+  var cv=document.getElementById('heroFx');
+  if(cv&&!reduce&&cv.getContext){
+    var ctx=cv.getContext('2d'),dpr=Math.min(devicePixelRatio||1,2),W=0,H=0,parts=[],mouse={x:-999,y:-999},running=true,raf;
+    function size(){var r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
+    function spawn(p,fresh){p.x=fresh?Math.random()*W:-20-Math.random()*W*.2;p.y=Math.random()*H;p.vx=.25+Math.random()*.55;p.ph=Math.random()*6.28;p.amp=.3+Math.random()*.7;p.r=1.6+Math.random()*2.6;return p;}
+    function init(){size();var n=W<700?42:96;parts=[];for(var i=0;i<n;i++)parts.push(spawn({},true));}
+    function frame(){
+      if(!running){raf=null;return;}
+      ctx.clearRect(0,0,W,H);
+      for(var i=0;i<parts.length;i++){var p=parts[i];
+        p.ph+=.02;p.x+=p.vx;p.y+=Math.sin(p.ph)*p.amp*.6;
+        var dx=p.x-mouse.x,dy=p.y-mouse.y,d2=dx*dx+dy*dy;if(d2<14000){var f=(14000-d2)/14000;p.x+=dx*f*.06;p.y+=dy*f*.06;}
+        if(p.x>W+30)spawn(p,false);
+        var t=Math.max(0,Math.min(1,(p.x/W-.45)/.4));
+        var r=p.r+t*4.2;
+        ctx.globalAlpha=.32+.55*(1-Math.abs(.5-p.x/W));
+        ctx.beginPath();ctx.arc(p.x,p.y,r,0,6.283);
+        ctx.fillStyle=t<.5?'#7FE0C2':'#F5B83D';ctx.fill();
+        if(t>.75&&r>6){ctx.globalAlpha*=1;ctx.fillStyle='#0E1726';ctx.font='700 '+(r*1.25|0)+'px system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('₹',p.x,p.y+.5);}
+        // faint dotted trail like the logo route
+        if(t>0&&t<1&&i%3===0){ctx.globalAlpha=.25;ctx.fillStyle='#F5B83D';ctx.beginPath();ctx.arc(p.x-14,p.y-Math.sin(p.ph)*3,1.1,0,6.283);ctx.fill();}
+      }
+      ctx.globalAlpha=1;raf=requestAnimationFrame(frame);
+    }
+    init();addEventListener('resize',function(){init()});
+    var hero=document.getElementById('top');
+    hero.addEventListener('pointermove',function(e){var r=cv.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;});
+    hero.addEventListener('pointerleave',function(){mouse.x=mouse.y=-999});
+    new IntersectionObserver(function(es){running=es[0].isIntersecting&&!document.hidden;if(running&&!raf)raf=requestAnimationFrame(frame);}).observe(hero);
+    document.addEventListener('visibilitychange',function(){running=!document.hidden;if(running&&!raf)raf=requestAnimationFrame(frame);});
+    raf=requestAnimationFrame(frame);
+  }
+
+  // scroll reveals: headings rise word by word, blocks slide in with a stagger
+  var heads=document.querySelectorAll('main h2:not(.kinetic), .research h3, .get h3');
+  [].forEach.call(heads,function(h){if(h.closest('.hero'))return;var words=h.textContent.trim().split(/\s+/);h.setAttribute('aria-label',h.textContent.trim());h.textContent='';words.forEach(function(wd,i){var w=document.createElement('span');w.className='w';w.setAttribute('aria-hidden','true');var inner=document.createElement('span');inner.textContent=wd;w.style.setProperty('--i',i);inner.style.setProperty('--i',i);w.appendChild(inner);h.appendChild(w);if(i<words.length-1)h.appendChild(document.createTextNode(' '));});h.classList.add('rv-words');});
+  var groups=[['.lead'],['.services .svc'],['.get li'],['.usp article'],['.research li'],['.quiz fieldset'],['.about > div > p'],['.facts'],['.li-inline'],['.dd'],['.ach article'],['.slider'],['.contact .details li'],['#form'],['.num'],['.creds li']];
+  groups.forEach(function(g){var els=document.querySelectorAll(g[0]);[].forEach.call(els,function(el,i){if(el.closest('.hero')&&!el.closest('.creds'))return;el.classList.add('rv');el.style.setProperty('--rd',(Math.min(i,6)*0.09)+'s');});});
+  if('IntersectionObserver' in window&&!reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');if(e.target.matches('h2'))e.target.classList.add('sweep-on');io.unobserve(e.target);}});},{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.rv,.rv-words').forEach(function(el){io.observe(el)});
+  }else{document.querySelectorAll('.rv,.rv-words').forEach(function(el){el.classList.add('in','sweep-on')});}
+
+  // number counters
+  var nums=document.querySelectorAll('[data-count]');
+  function fmt(n){return n.toLocaleString('en-IN');}
+  function runCount(el){var to=+el.dataset.count,suf=el.dataset.suffix||'';if(reduce){el.textContent=fmt(to)+suf;return;}var t0=performance.now();(function st(t){var k=Math.min(1,(t-t0)/1600),e=1-Math.pow(1-k,4);el.textContent=fmt(Math.round(to*e))+suf;if(k<1)requestAnimationFrame(st);})(t0);}
+  if(reduce){[].forEach.call(nums,runCount);}else if('IntersectionObserver' in window){var nio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){runCount(e.target);nio.unobserve(e.target);}})},{threshold:.6});[].forEach.call(nums,function(n){nio.observe(n)});}else{[].forEach.call(nums,runCount);}
+
+  // cards: cursor spotlight + gentle 3D tilt (mouse only)
+  document.querySelectorAll('.svc, .usp article, .ach article, .num, .facts').forEach(function(c){
+    c.classList.add('fx-card');
+    if(!finePointer||reduce)return;
+    c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.setProperty('--mx',(x*100)+'%');c.style.setProperty('--my',(y*100)+'%');c.style.transform='perspective(900px) rotateX('+((.5-y)*6).toFixed(2)+'deg) rotateY('+((x-.5)*8).toFixed(2)+'deg) translateY(-4px)';});
+    c.addEventListener('pointerleave',function(){c.style.transform='';});
+  });
+
+  // magnetic call-to-action buttons
+  if(finePointer&&!reduce)document.querySelectorAll('.btn-lilac,.hero .btn,.quiz .btn,#form .btn').forEach(function(b){
+    b.classList.add('mag');
+    b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;b.style.transform='translate('+(x*.18).toFixed(1)+'px,'+(y*.28).toFixed(1)+'px)';});
+    b.addEventListener('pointerleave',function(){b.style.transform='';});
+  });
+
+  // how it works: steps light up one after another
+  var steps=document.querySelectorAll('.steps li');
+  if(steps.length&&'IntersectionObserver' in window){var sio=new IntersectionObserver(function(es){if(es[0].isIntersecting){[].forEach.call(steps,function(li,i){setTimeout(function(){li.style.color='var(--gold)';li.style.setProperty('--sc','1');li.classList.add('lit-step');},reduce?0:i*450);});sio.disconnect();}},{threshold:.8});sio.observe(steps[0].parentNode);}
+
+  // achievements slider: autoplay with a progress bar, pauses on hover/focus/offscreen
+  var tr=document.getElementById('track'),sl=document.getElementById('slider'),nx=document.getElementById('slNext');
+  if(tr&&sl&&nx&&!reduce){var bar=document.createElement('span');bar.className='sl-progress';bar.setAttribute('aria-hidden','true');sl.appendChild(bar);
+    var DUR=5000,acc=0,last=0,paused=false,vis=false;
+    sl.addEventListener('pointerenter',function(){paused=true});sl.addEventListener('pointerleave',function(){paused=false});
+    sl.addEventListener('focusin',function(){paused=true});sl.addEventListener('focusout',function(){paused=false});
+    new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe(sl);
+    (function loop(t){var dt=last?t-last:0;last=t;if(vis&&!paused&&!document.hidden){acc+=dt;if(acc>=DUR){acc=0;nx.click();}}bar.style.transform='scaleX('+(acc/DUR).toFixed(3)+')';requestAnimationFrame(loop);})(0);
+  }
 })();
 </script>
 </body>
