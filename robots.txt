@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://meghatelkar.github.io/megha-portfolio/sitemap.xml
