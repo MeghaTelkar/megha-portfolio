@@ -1136,7 +1136,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 
   // ---- hero title lines rise on load ----
   var ht=document.getElementById('heroTitle');
-  if(ht)requestAnimationFrame(function(){requestAnimationFrame(function(){ht.classList.add('in');});});
+  if(ht){requestAnimationFrame(function(){requestAnimationFrame(function(){ht.classList.add('in');});});setTimeout(function(){ht.classList.add('in');},400);}
 
   // ---- scroll reveals (blocks and line-masked headings) ----
   var els=document.querySelectorAll('.rv,.rvl');
