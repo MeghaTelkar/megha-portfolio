@@ -7,8 +7,8 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
-<title>Lab to Lucre | Funding strategy for early-stage startups, by Megha Telkar</title>
-<meta name="description" content="Lab to Lucre helps early-stage biotech, life-science and technology founders in India get investor-ready: funding strategy, investor readiness and go-to-market, with a written plan in 5 days.">
+<title>Lab to Lucre | Startup funding strategy by Megha Telkar</title>
+<meta name="description" content="Funding strategy, investor readiness and go-to-market for early-stage biotech, life-science and tech startups in India. A written plan in 5 working days.">
 <meta name="author" content="Megha Telkar">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0E1726">
@@ -121,10 +121,11 @@ nav.main{display:flex;align-items:center;justify-content:space-between;height:68
   .burger{display:block}
   .newsbar .right{display:none}
 }
-@media (max-width:520px){.nav-cta{display:none}.newsbar{font-size:.64rem}}
+.btn{white-space:nowrap}
+@media (max-width:520px){.nav-cta{padding:10px 14px;letter-spacing:.06em;font-size:.7rem}.nav-cta .ar,.nav-cta .live{display:none}.logo span{font-size:.88rem}.logo .mark{width:36px}}
 
 /* hero */
-.hero{background:var(--night);color:var(--white);min-height:100vh;min-height:100svh;padding:168px 0 0;display:flex;flex-direction:column;overflow:hidden;isolation:isolate}
+.hero{background:var(--night);color:var(--white);min-height:100vh;min-height:100svh;padding:140px 0 0;display:flex;flex-direction:column;overflow:hidden;isolation:isolate}
 .hero-fx{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
 .hero .wrap{width:100%}
 .hero h1{font-size:clamp(2.6rem,6.6vw,5.6rem);line-height:.96;font-weight:500}
@@ -151,14 +152,14 @@ nav.main{display:flex;align-items:center;justify-content:space-between;height:68
 @media (max-width:860px){.split{grid-template-columns:1fr;gap:28px}}
 
 /* numbers */
-.nums{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);margin-top:56px}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);margin-top:56px}
 .num{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:36px 32px 30px;display:flex;flex-direction:column;justify-content:space-between;min-height:220px;position:relative;overflow:hidden}
 .num span{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);max-width:24ch}
 .num b{font-weight:400;font-size:clamp(2.8rem,5.4vw,4.6rem);letter-spacing:-.04em;line-height:1;margin-top:28px;font-variant-numeric:tabular-nums}
 .num::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:linear-gradient(90deg,var(--mint),var(--gold));transform:scaleX(0);transform-origin:0 50%;transition:transform 1.4s var(--ease)}
 .num.in::after{transform:scaleX(1)}
-@media (max-width:860px){.nums{grid-template-columns:1fr 1fr}.num{min-height:170px;padding:26px 20px}}
-@media (max-width:420px){.nums{grid-template-columns:1fr}}
+@media (max-width:860px){.nums{grid-template-columns:1fr}.num{min-height:170px;padding:26px 20px}}
+
 
 /* journey route */
 .route{position:relative;margin-top:72px;--p:1}
@@ -436,16 +437,48 @@ footer{background:var(--night);color:var(--dtext);padding:96px 0 40px}
   .num::after{transition:none}
 }
 
+/* live dot on the booking button */
+.live{width:7px;height:7px;border-radius:50%;background:#1FB386;box-shadow:0 0 0 0 rgba(31,179,134,.6);animation:ping 2s infinite;flex:none}
+
+/* app-style micro-interactions (60fps) */
+.btn:active{transform:scale(.96)}
+.quiz label:has(input:checked){animation:pick .35s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pick{0%{transform:scale(.97)}100%{transform:scale(1)}}
+.quiz fieldset{transition:border-color .3s,box-shadow .3s}
+.quiz fieldset:has(input:checked){border-color:rgba(15,110,92,.45)}
+.quiz fieldset:has(input:checked)::before{content:"\2713";color:#fff;background:var(--teal);width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;top:20px;right:18px;letter-spacing:0;animation:pop .4s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{0%{transform:scale(0)}100%{transform:scale(1)}}
+.qbar{grid-column:1/-1;height:4px;border-radius:4px;background:var(--line);overflow:hidden;margin-top:6px}
+.qbar i{display:block;height:100%;width:calc(var(--q,0) * 100% / 6);background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.qcount{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ring{width:150px;height:150px;grid-row:span 3;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:10}
+.ring .bg{stroke:rgba(232,237,243,.12)}
+.ring .fg{stroke:var(--gold);stroke-linecap:round;stroke-dasharray:0 100;transition:stroke-dasharray 1s cubic-bezier(.2,.7,.2,1)}
+.ring .score{position:absolute;inset:0;display:flex;align-items:baseline;justify-content:center;padding-top:44px;font-size:3.4rem;grid-row:auto;line-height:1}
+.ring .score small{font-size:.32em;margin-left:2px}
+#form button[type=submit].sent{background:var(--teal)}
+button.copy.ok{border-color:var(--mint);color:var(--mint)}
+
+/* footer: oversized wordmark that fills as you arrive, coins fall where you point (Footer gallery) */
+.giant{position:relative;margin-top:72px;padding-top:30px;overflow:hidden;user-select:none;-webkit-user-select:none;cursor:crosshair;touch-action:pan-y}
+.gw{display:inline-block;font-weight:600;text-transform:uppercase;letter-spacing:-.045em;line-height:.8;font-size:clamp(3.4rem,15.2vw,15.5rem);white-space:nowrap;padding:.08em 0 .06em;
+  background:linear-gradient(90deg,var(--mint) 0%,var(--gold) var(--fill,0%),#1A2536 var(--fill,0%));-webkit-background-clip:text;background-clip:text;color:transparent}
+#coinFx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.giant-hint{position:absolute;right:0;top:0;font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#7D8A9C}
+@media (prefers-reduced-motion:reduce){.giant{cursor:auto}.gw{--fill:100%}}
+footer{padding-bottom:28px}
+.f-base{margin-top:28px}
+.f-grid{grid-template-columns:6fr 3fr 3fr}
+@media (max-width:860px){.f-grid{grid-template-columns:1fr 1fr}}
+
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 <header>
-  <div class="newsbar"><div class="wrap">
-    <a href="#check"><b>New:</b> Free 2-minute investor-readiness check &#8599;</a>
-    <span class="right"><a href="#contact">November 1:1 slots open</a><span aria-hidden="true">|</span><a href="https://www.linkedin.com/in/megha-telkar-286a5b22a/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
-  </div></div>
   <nav class="wrap main" aria-label="Main">
     <a class="logo" href="#top"><svg class="mark" viewBox="0 -8 220 152" aria-hidden="true" focusable="false"><path d="M17 96 H71 L80 120 Q84 136 68 136 H20 Q4 136 8 120 Z" fill="#7FE0C2"/><path d="M24 20 H64 M32 20 V58 L8 120 Q4 136 20 136 H68 Q84 136 80 120 L56 58 V20" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><path d="M44 14 C48 -6 98 0 104 40 C110 80 146 88 164 58" fill="none" stroke="#F5B83D" stroke-width="7" stroke-linecap="round" stroke-dasharray="0.5 13"/><circle cx="192" cy="46" r="25" fill="#F5B83D"/><path transform="translate(184.00 56)" d="M15.025390625 -15.326171875 14.287109375 -12.591796875H0.984375L1.708984375 -15.326171875ZM8.1484375 0.0 1.326171875 -8.1484375 1.3125 -10.58203125H4.703125Q5.8515625 -10.58203125 6.6171875 -10.9990234375Q7.3828125 -11.416015625 7.779296875 -12.140625Q8.17578125 -12.865234375 8.17578125 -13.794921875Q8.17578125 -15.203125 7.3623046875 -16.078125Q6.548828125 -16.953125 4.703125 -16.953125H0.984375L1.8046875 -20.37109375H4.703125Q7.232421875 -20.37109375 8.9140625 -19.60546875Q10.595703125 -18.83984375 11.443359375 -17.4384765625Q12.291015625 -16.037109375 12.291015625 -14.109375Q12.291015625 -12.400390625 11.716796875 -11.1015625Q11.142578125 -9.802734375 9.92578125 -8.955078125Q8.708984375 -8.107421875 6.767578125 -7.73828125L6.6171875 -7.669921875L12.71484375 -0.177734375V0.0ZM15.0390625 -20.37109375 14.287109375 -17.58203125 3.36328125 -17.595703125 4.115234375 -20.37109375Z" fill="#0E1726"/></svg><span>Lab to Lucre</span></a>
     <ul class="links" id="links">
@@ -457,7 +490,7 @@ footer{background:var(--night);color:var(--dtext);padding:96px 0 40px}
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div style="display:flex;gap:10px;align-items:center">
-      <a class="btn btn-solid nav-cta" href="#contact">Book a 1:1 <span class="ar" aria-hidden="true">&#8599;</span></a>
+      <a class="btn btn-solid nav-cta" href="#contact"><span class="live" aria-hidden="true"></span>Book a 1:1 <span class="ar" aria-hidden="true">&#8599;</span></a>
       <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="links">&#9776;</button>
     </div>
   </nav>
@@ -467,12 +500,12 @@ footer{background:var(--night);color:var(--dtext);padding:96px 0 40px}
 <section class="hero" id="top">
   <canvas class="hero-fx" id="heroFx" aria-hidden="true"></canvas>
   <div class="wrap">
-    <p class="eyebrow">One partner, bench to first cheque</p>
+    <p class="eyebrow">Startup advisory &middot; Bengaluru</p>
     <h1 id="heroTitle"><span class="ln" style="--li:0"><span>Every step from</span></span><span class="ln" style="--li:1"><span><span class="mint">lab</span> to <span class="gold">lucre</span></span></span></h1>
-    <p class="sub">Funding strategy, investor readiness and go-to-market for early-stage biotech and technology startups. Lab to Lucre helps founders get from a working prototype to a paying customer, then raise money on that proof.</p>
-    <p class="byline">Megha Telkar, Founder &middot; Bengaluru</p>
+    <p class="sub">Funding strategy, investor readiness and go-to-market for early-stage biotech and technology startups.</p>
+    <p class="byline">Founded by Megha Telkar</p>
     <div class="btns">
-      <a class="btn btn-solid" href="#contact">Book a 1:1 <span class="ar" aria-hidden="true">&#8599;</span></a>
+      <a class="btn btn-solid" href="#check">Check your readiness <span class="ar" aria-hidden="true">&#8599;</span></a>
       <a class="btn btn-ghost" href="#company">Our services <span class="ar" aria-hidden="true">&#8599;</span></a>
     </div>
   </div>
@@ -480,8 +513,8 @@ footer{background:var(--night);color:var(--dtext);padding:96px 0 40px}
   <div class="ticker" aria-hidden="true">
     <span class="lbl">Sectors we work in</span>
     <div class="vp"><div class="tr">
-      <span>Biotech</span><span>MedTech</span><span>Agri-biotech</span><span>Life sciences</span><span>Diagnostics</span><span>Deep tech</span><span>Prototype to first customer</span><span>First customer to first cheque</span>
-      <span class="dup">Biotech</span><span class="dup">MedTech</span><span class="dup">Agri-biotech</span><span class="dup">Life sciences</span><span class="dup">Diagnostics</span><span class="dup">Deep tech</span><span class="dup">Prototype to first customer</span><span class="dup">First customer to first cheque</span>
+      <span>Biotech</span><span>MedTech</span><span>Agri-biotech</span><span>Life sciences</span><span>Diagnostics</span><span>Deep tech</span>
+      <span class="dup">Biotech</span><span class="dup">MedTech</span><span class="dup">Agri-biotech</span><span class="dup">Life sciences</span><span class="dup">Diagnostics</span><span class="dup">Deep tech</span>
     </div></div>
   </div>
 </section>
@@ -491,12 +524,11 @@ footer{background:var(--night);color:var(--dtext);padding:96px 0 40px}
     <div class="split">
       <div>
         <p class="eyebrow">About Lab to Lucre</p>
-        <h2 id="h-intro" class="rvl"><span class="ln" style="--li:0"><span>One advisor,</span></span><span class="ln" style="--li:1"><span>from bench to</span></span><span class="ln" style="--li:2"><span>first cheque.</span></span></h2>
+        <h2 id="h-intro" class="rvl"><span class="ln" style="--li:0"><span>Your science,</span></span><span class="ln" style="--li:1"><span>made fundable.</span></span></h2>
       </div>
       <div class="copy">
         <p class="rv">Lab to Lucre is a Bengaluru consultancy for early-stage technology and life-science startups. The person who reads your science is the same person who shapes your funding route, your investor story and your first sales.</p>
         <p class="rv">Most science-led startups stall between a working prototype and a paying customer. You get one written plan for that stretch, and a clear view of the proof investors will ask for.</p>
-        <div class="btns rv"><a class="btn btn-ink" href="#company">See the services <span class="ar" aria-hidden="true">&#8599;</span></a></div>
       </div>
     </div>
     <p class="eyebrow" style="margin-top:96px">By the numbers</p>
@@ -504,7 +536,6 @@ footer{background:var(--night);color:var(--dtext);padding:96px 0 40px}
       <div class="num" role="listitem"><span>Startups studied to build the funding playbook</span><b data-count="10000" data-suffix="">10,000</b></div>
       <div class="num" role="listitem"><span>Founder events run at Bangalore Bioinnovation Centre</span><b data-count="30" data-suffix="+">30+</b></div>
       <div class="num" role="listitem"><span>Investor and grant introductions made</span><b data-count="20" data-suffix="+">20+</b></div>
-      <div class="num" role="listitem"><span>Working days to your written readiness report</span><b data-count="5" data-suffix="">5</b></div>
     </div>
   </div>
 </section>
@@ -513,7 +544,7 @@ footer{background:var(--night);color:var(--dtext);padding:96px 0 40px}
   <div class="wrap">
     <p class="eyebrow">The route</p>
     <h2 id="h-journey" class="rvl"><span class="ln" style="--li:0"><span>Every stage,</span></span><span class="ln" style="--li:1"><span>planned with intent.</span></span></h2>
-    <p class="lead rv">Where Lab to Lucre works with founders, from the bench to the first cheque.</p>
+    <p class="lead rv">Six stages from idea to commercialisation. Lab to Lucre works across all of them.</p>
     <div class="route" id="route"><span class="traveller" aria-hidden="true">&#8377;</span>
       <ol class="stages" id="stages">
         <li><span class="n" aria-hidden="true"></span><b>Ideation</b><small>Is the problem real, and who pays?</small></li>
@@ -531,7 +562,6 @@ footer{background:var(--night);color:var(--dtext);padding:96px 0 40px}
   <div class="wrap">
     <p class="eyebrow">Our services</p>
     <h2 id="h-company" class="rvl"><span class="ln" style="--li:0"><span>Four services.</span></span><span class="ln" style="--li:1"><span>One partner.</span></span></h2>
-    <p class="lead rv">Lab to Lucre works with founders from prototype to first customer to first cheque.</p>
     <div class="svc-split">
       <div class="svc-panel" aria-hidden="true">
         <span class="idx">Service</span>
@@ -550,8 +580,7 @@ footer{background:var(--night);color:var(--dtext);padding:96px 0 40px}
       <div>
         <p class="eyebrow">After a 1:1</p>
         <h3 style="font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.05;letter-spacing:-.02em">What you get, in writing</h3>
-        <ol class="steps" aria-label="How it works"><li>Book a 1:1</li><li>Written report in 5 days</li><li>Your 90-day plan</li></ol>
-        <div class="btns" style="margin-top:28px;align-items:center"><a class="btn btn-ink" href="#contact">Book a 1:1 slot <span class="ar" aria-hidden="true">&#8599;</span></a><span class="slots">November 1:1 slots open</span></div>
+        <p class="lead" style="margin-top:18px;font-size:1rem">Every 1:1 ends with these five, in writing.</p>
       </div>
       <ol>
         <li class="rv"><span><b>Readiness scorecard.</b> Where you stand on team, story, unit economics, market and traction, scored out of 20 each.</span></li>
@@ -580,7 +609,7 @@ footer{background:var(--night);color:var(--dtext);padding:96px 0 40px}
     <div class="usp">
       <article class="rv"><span class="k">01</span><h3>Fluent in lab and market</h3><p>The founder is a biotech engineer with a marketing MBA. Lab to Lucre understands your science and turns it into a story a customer and an investor will both buy.</p><span class="vs">Unlike science-blind deck polishers</span></article>
       <article class="rv"><span class="k">02</span><h3>Built for the early stage</h3><p>Lab to Lucre covers prototype, first customer and first cheque, the stretch where most founders are left alone.</p><span class="vs">Unlike advisors who start at Series A</span></article>
-      <article class="rv"><span class="k">03</span><h3>A plan, not a pitch list</h3><p>You get a written report in 5 days and a 90-day plan with owners and deadlines.</p><span class="vs">Unlike sellers of investor lists</span></article>
+      <article class="rv"><span class="k">03</span><h3>A plan, not a pitch list</h3><p>You leave with written next steps, owners and deadlines, not a list of names to cold-email.</p><span class="vs">Unlike sellers of investor lists</span></article>
     </div>
     <div class="research rv">
       <div><p class="eyebrow" style="margin-bottom:12px">Field notes</p><h3>How fundraising help usually works</h3></div>
@@ -591,7 +620,6 @@ footer{background:var(--night);color:var(--dtext);padding:96px 0 40px}
         <li>Founders say their biggest worry is paying upfront for investor access with no clear deliverables.</li>
       </ul>
     </div>
-    <div class="cta"><a class="btn btn-gold" href="#contact">Book a 1:1 slot <span class="ar" aria-hidden="true">&#8599;</span></a><span class="slots">November 1:1 slots open</span></div>
   </div>
 </section>
 
@@ -625,11 +653,12 @@ footer{background:var(--night);color:var(--dtext);padding:96px 0 40px}
         <label><input type="radio" name="q6" value="2"> Yes, they have told us so</label>
         <label><input type="radio" name="q6" value="1"> Some would</label>
         <label><input type="radio" name="q6" value="0"> We haven't asked</label></fieldset>
-      <div class="qfoot"><button class="btn btn-ink" type="submit">Show my result <span class="ar" aria-hidden="true">&#8599;</span></button>
+      <div class="qbar" aria-hidden="true"><i id="qBar"></i></div>
+      <div class="qfoot"><span class="qcount" id="qCount" aria-hidden="true">0 of 6 answered</span><button class="btn btn-ink" type="submit">Show my result <span class="ar" aria-hidden="true">&#8599;</span></button>
       <p class="note" id="quizNote" role="status"></p></div>
     </form>
     <div class="result" id="quizResult" hidden tabindex="-1">
-      <p class="score"><span id="qScore">0</span><small>/12</small></p>
+      <div class="ring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="50" pathLength="100"/><circle class="fg" id="qRing" cx="60" cy="60" r="50" pathLength="100"/></svg><p class="score"><span id="qScore">0</span><small>/12</small></p></div>
       <h3 id="qBand"></h3>
       <ul id="qGaps"></ul>
       <a class="btn btn-gold" id="qShare" href="#contact">Get a plan for these gaps <span class="ar" aria-hidden="true">&#8599;</span></a>
@@ -650,14 +679,12 @@ footer{background:var(--night);color:var(--dtext);padding:96px 0 40px}
           <h3>Connect with Megha on LinkedIn</h3>
           <p>Send a connection request and mention that you came from the Lab to Lucre website.</p>
           <a class="btn btn-ink" id="li-btn" href="https://www.linkedin.com/in/megha-telkar-286a5b22a/" target="_blank" rel="noopener noreferrer">Add Megha on LinkedIn <span class="ar" aria-hidden="true">&#8599;</span></a>
-          <span class="li-id">linkedin.com/in/megha-telkar-286a5b22a</span>
         </div>
       </div>
       <div class="facts rv">
         <h3>At a glance</h3>
         <dl>
           <div><dt>Company</dt><dd>Lab to Lucre, Bengaluru</dd></div>
-          <div><dt>Focus</dt><dd>Funding strategy, investor readiness, go-to-market</dd></div>
           <div><dt>Sectors</dt><dd>Biotechnology, life sciences, MedTech, agri-biotech</dd></div>
           <div><dt>Founder background</dt><dd>Biotech engineer with a marketing MBA</dd></div>
           <div><dt>Credential</dt><dd>Harvard Business School Online certificate in alternative investments</dd></div>
@@ -771,8 +798,7 @@ footer{background:var(--night);color:var(--dtext);padding:96px 0 40px}
     <div class="faq-side">
       <p class="eyebrow">Questions</p>
       <h2 id="h-faq" class="rvl"><span class="ln" style="--li:0"><span>Questions</span></span><span class="ln" style="--li:1"><span>founders ask</span></span></h2>
-      <p class="lead rv">Quick answers to what founders ask most.</p>
-      <div class="ask rv"><h3>Can't find your answer?</h3><p>Send a note with your stage and question. Megha reads every query and replies by email.</p><a class="btn btn-ink" href="mailto:telkar.megha24@gmail.com">Email Megha <span class="ar" aria-hidden="true">&#8599;</span></a></div>
+      <p class="lead rv">Quick answers to what founders ask most. Anything else, ask in the form below.</p>
     </div>
     <div>
       <details class="dd"><summary><span class="qn">01</span>Who is Lab to Lucre for?</summary><div class="dd-body"><p>Early-stage founders in biotech, life sciences, MedTech, agri-biotech and other technology startups, from a working prototype to the first raise.</p></div></details>
@@ -788,12 +814,11 @@ footer{background:var(--night);color:var(--dtext);padding:96px 0 40px}
   <div class="wrap">
     <p class="eyebrow">Work with us</p>
     <h2 id="h-contact" class="rvl"><span class="ln" style="--li:0"><span>Let's get your startup</span></span><span class="ln" style="--li:1"><span class="gold">investor-ready.</span></span></h2>
-    <p class="lead rv">Tell me about your startup and pick the help you need. I read every query and reply by email. November 1:1 slots are open.</p>
+    <p class="lead rv">Tell me about your startup and pick the help you need. I read every query and reply by email.</p>
     <div class="contact-grid">
       <ul class="details rv">
         <li><span>Email</span><a href="mailto:telkar.megha24@gmail.com" id="mail">telkar.megha24@gmail.com</a><button class="copy" id="copy" type="button">Copy</button></li>
         <li><span>Phone</span><a href="tel:+917019654059">+91 70196 54059</a></li>
-        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/megha-telkar-286a5b22a/" target="_blank" rel="noopener noreferrer">linkedin.com/in/megha-telkar-286a5b22a</a></li>
         <li><span>Location</span>Bengaluru, Karnataka</li>
       </ul>
     <form id="form" novalidate>
@@ -833,14 +858,13 @@ footer{background:var(--night);color:var(--dtext);padding:96px 0 40px}
     <div class="f-grid">
       <div class="f-brand">
         <a class="logo" href="#top"><svg class="mark" viewBox="0 -8 220 152" aria-hidden="true" focusable="false"><path d="M17 96 H71 L80 120 Q84 136 68 136 H20 Q4 136 8 120 Z" fill="#7FE0C2"/><path d="M24 20 H64 M32 20 V58 L8 120 Q4 136 20 136 H68 Q84 136 80 120 L56 58 V20" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><path d="M44 14 C48 -6 98 0 104 40 C110 80 146 88 164 58" fill="none" stroke="#F5B83D" stroke-width="7" stroke-linecap="round" stroke-dasharray="0.5 13"/><circle cx="192" cy="46" r="25" fill="#F5B83D"/><path transform="translate(184.00 56)" d="M15.025390625 -15.326171875 14.287109375 -12.591796875H0.984375L1.708984375 -15.326171875ZM8.1484375 0.0 1.326171875 -8.1484375 1.3125 -10.58203125H4.703125Q5.8515625 -10.58203125 6.6171875 -10.9990234375Q7.3828125 -11.416015625 7.779296875 -12.140625Q8.17578125 -12.865234375 8.17578125 -13.794921875Q8.17578125 -15.203125 7.3623046875 -16.078125Q6.548828125 -16.953125 4.703125 -16.953125H0.984375L1.8046875 -20.37109375H4.703125Q7.232421875 -20.37109375 8.9140625 -19.60546875Q10.595703125 -18.83984375 11.443359375 -17.4384765625Q12.291015625 -16.037109375 12.291015625 -14.109375Q12.291015625 -12.400390625 11.716796875 -11.1015625Q11.142578125 -9.802734375 9.92578125 -8.955078125Q8.708984375 -8.107421875 6.767578125 -7.73828125L6.6171875 -7.669921875L12.71484375 -0.177734375V0.0ZM15.0390625 -20.37109375 14.287109375 -17.58203125 3.36328125 -17.595703125 4.115234375 -20.37109375Z" fill="#0E1726"/></svg><span>Lab to Lucre</span></a>
-        <p class="f-line">One partner.<span>Every step from lab to lucre.</span></p>
-        <div class="social"><a href="https://www.linkedin.com/in/megha-telkar-286a5b22a/" target="_blank" rel="noopener noreferrer" aria-label="Megha Telkar on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a><a href="mailto:telkar.megha24@gmail.com" aria-label="Email Megha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg></a></div>
+        <p class="f-line">The way from<span>lab to profit.</span></p>
       </div>
-      <div class="f-col"><h3>Company</h3><ul><li><a href="#company">Services</a></li><li><a href="#why-me">Why us</a></li><li><a href="#check">Readiness check</a></li><li><a href="#about">Founder</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-      <div class="f-col"><h3>Services</h3><ul><li><a href="#company">Funding strategy</a></li><li><a href="#company">Investor readiness</a></li><li><a href="#company">Go-to-market</a></li><li><a href="#contact">1:1 advisory</a></li></ul></div>
-      <div class="f-col"><h3>Contact</h3><ul><li><a href="mailto:telkar.megha24@gmail.com">Email</a></li><li><a href="tel:+917019654059">+91 70196 54059</a></li><li><a href="https://www.linkedin.com/in/megha-telkar-286a5b22a/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li><li>Bengaluru, India</li></ul></div>
+      <nav class="f-col" aria-label="Footer"><h3>Explore</h3><ul><li><a href="#company">Services</a></li><li><a href="#why-me">Why us</a></li><li><a href="#check">Readiness check</a></li><li><a href="#about">Founder</a></li><li><a href="#faq">FAQ</a></li></ul></nav>
+      <div class="f-col"><h3>Say hello</h3><div class="social"><a href="https://www.linkedin.com/in/megha-telkar-286a5b22a/" target="_blank" rel="noopener noreferrer" aria-label="Megha Telkar on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a><a href="mailto:telkar.megha24@gmail.com" aria-label="Email Megha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg></a></div></div>
     </div>
-    <div class="f-base"><p>&copy; <span id="yr"></span> Lab to Lucre. Founded by Megha Telkar.</p><p><a href="privacy.html">Privacy policy</a> &middot; <a href="#top">Back to top &#8593;</a></p></div>
+    <div class="giant" id="giant" aria-hidden="true"><span class="giant-hint">Point here &middot; drop a coin on your way out</span><span class="gw" id="gw">Lab to Lucre</span><canvas id="coinFx"></canvas></div>
+    <div class="f-base"><p>&copy; <span id="yr"></span> Lab to Lucre. Founded by Megha Telkar, Bengaluru.</p><p><a href="privacy.html">Privacy policy</a></p></div>
   </div>
 </footer>
 
@@ -1192,6 +1216,61 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     (function loop(t){var dt=lt?t-lt:0;lt=t;if(vis&&!paused&&!document.hidden){acc+=dt;if(acc>=DUR){acc=0;nx.click();}}bar.style.transform='scaleX('+(acc/DUR).toFixed(3)+')';requestAnimationFrame(loop);})(0);
   }
 })();
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,IO='IntersectionObserver' in window;
+
+  // ---- quiz: live progress, then the score ring fills ----
+  var quiz=document.getElementById('quiz'),bar=document.getElementById('qBar'),cnt=document.getElementById('qCount'),ring=document.getElementById('qRing');
+  if(quiz){
+    function prog(){var n=quiz.querySelectorAll('input[type=radio]:checked').length;if(bar)bar.parentNode.style.setProperty('--q',n);if(bar)bar.style.width=(n/6*100)+'%';if(cnt)cnt.textContent=n+' of 6 answered';}
+    quiz.addEventListener('change',prog);prog();
+    quiz.addEventListener('submit',function(){var t=0,n=0;quiz.querySelectorAll('input[type=radio]:checked').forEach(function(c){t+=+c.value;n++});if(n<6||!ring)return;ring.style.strokeDasharray='0 100';void ring.getBoundingClientRect();setTimeout(function(){ring.style.strokeDasharray=(t/12*100).toFixed(1)+' 100';},reduce?0:60);});
+  }
+
+  // ---- form: the send button confirms with a tick ----
+  var note=document.getElementById('note'),fb=document.querySelector('#form button[type=submit]');
+  if(note&&fb&&'MutationObserver' in window){var label=fb.innerHTML;new MutationObserver(function(){if(/received|has been sent/i.test(note.textContent)){fb.classList.add('sent');fb.innerHTML='&#10003; Sent';setTimeout(function(){fb.classList.remove('sent');fb.innerHTML=label;},4000);}}).observe(note,{childList:true,characterData:true,subtree:true});}
+
+  // ---- copy email: brief confirmation state ----
+  var cp=document.getElementById('copy');if(cp)cp.addEventListener('click',function(){cp.classList.add('ok');setTimeout(function(){cp.classList.remove('ok')},1800);});
+
+  // ---- footer wordmark fills mint to gold as you reach the bottom ----
+  var giant=document.getElementById('giant'),gw=document.getElementById('gw');
+  if(giant&&gw&&!reduce){var tk=false;function fill(){tk=false;var r=giant.getBoundingClientRect(),p=Math.max(0,Math.min(1,(innerHeight-r.top)/(r.height+innerHeight*0.35)));gw.style.setProperty('--fill',(p*100).toFixed(1)+'%');}
+    addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(fill)}},{passive:true});fill();}
+
+  // ---- footer: coins fall where you point and pile up on the baseline ----
+  var cv=document.getElementById('coinFx');
+  if(cv&&giant&&!reduce&&cv.getContext){
+    var ctx=cv.getContext('2d'),dpr=Math.min(devicePixelRatio||1,2),W=0,H=0,coins=[],raf=null,lastDrop=0,vis=false;
+    function size(){var r=giant.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
+    size();addEventListener('resize',size);
+    function drop(x,y){if(coins.length>60)coins.shift();coins.push({x:x,y:y,vx:(Math.random()-.5)*2.2,vy:-2-Math.random()*2,r:9+Math.random()*5,rot:0,vr:(Math.random()-.5)*.3,rest:false,life:1});if(!raf)raf=requestAnimationFrame(step);}
+    function step(){
+      ctx.clearRect(0,0,W,H);var alive=false;
+      for(var i=0;i<coins.length;i++){var c=coins[i];
+        if(!c.rest){c.vy+=.45;c.x+=c.vx;c.y+=c.vy;c.rot+=c.vr;
+          if(c.y>H-c.r){c.y=H-c.r;if(Math.abs(c.vy)>2.2){c.vy*=-.42;c.vx*=.7;}else{c.vy=0;c.vx*=.85;if(Math.abs(c.vx)<.05)c.rest=true;}}
+          if(c.x<c.r||c.x>W-c.r)c.vx*=-1;alive=true;}
+        else{c.life-=.004;if(c.life>0)alive=true;}
+        if(c.life<=0)continue;
+        ctx.save();ctx.globalAlpha=Math.min(1,c.life*2);ctx.translate(c.x,c.y);ctx.rotate(c.rot);
+        ctx.fillStyle='#F5B83D';ctx.beginPath();ctx.arc(0,0,c.r,0,6.283);ctx.fill();
+        ctx.strokeStyle='rgba(14,23,38,.35)';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(0,0,c.r*.72,0,6.283);ctx.stroke();
+        ctx.fillStyle='#0E1726';ctx.font='700 '+Math.round(c.r*1.15)+'px Archivo,system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('₹',0,1);ctx.restore();}
+      coins=coins.filter(function(c){return c.life>0});
+      raf=(alive&&vis)?requestAnimationFrame(step):null;
+    }
+    giant.addEventListener('pointermove',function(e){var t=performance.now();if(t-lastDrop<70)return;lastDrop=t;var r=giant.getBoundingClientRect();drop(e.clientX-r.left,Math.max(10,e.clientY-r.top));});
+    giant.addEventListener('pointerdown',function(e){var r=giant.getBoundingClientRect();for(var k=0;k<5;k++)drop(e.clientX-r.left+(Math.random()-.5)*20,Math.max(10,e.clientY-r.top));});
+    if(IO)new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis){size();if(coins.length&&!raf)raf=requestAnimationFrame(step);
+      // a small welcome shower the first time the footer comes into view
+      if(!giant._d){giant._d=1;for(var k=0;k<7;k++)(function(k){setTimeout(function(){drop(W*(.12+k*.12),8)},k*140)})(k);}}}).observe(giant);
+  }
+})();
+(function(){var g=document.getElementById('giant'),w=document.getElementById('gw');if(!g||!w)return;
+  function fit(){w.style.fontSize='100px';var k=g.clientWidth/w.scrollWidth;w.style.fontSize=Math.floor(100*k*0.99)+'px';}
+  fit();addEventListener('resize',fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);})();
 </script>
 </body>
 </html>
