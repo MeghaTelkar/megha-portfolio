@@ -474,6 +474,27 @@ footer{padding-bottom:28px}
 .f-base .legal{display:flex;flex-wrap:wrap;gap:6px 20px}
 #form [aria-invalid=true]{border-color:#B42318;outline:1px solid #B42318}
 
+/* fee agreement pop-up */
+.fee-back{position:fixed;inset:0;z-index:90;background:rgba(9,16,28,.72);display:grid;place-items:center;padding:16px}
+.fee-back[hidden]{display:none}
+.fee{position:relative;background:var(--paper);color:var(--text);border-radius:24px;max-width:560px;width:100%;max-height:calc(100vh - 32px);overflow:auto;padding:34px 32px 26px}
+.fee h2{font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:6px}
+.fee-price{display:flex;align-items:baseline;gap:8px;margin:6px 0 18px}
+.fee-price b{font-size:2.6rem;font-weight:600;letter-spacing:-.03em}
+.fee-price span{font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.fee-terms{list-style:none;border-top:1px solid var(--line)}
+.fee-terms li{padding:12px 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:.98rem}
+.fee-terms b{color:var(--text)}
+.fee-agree{display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:.98rem;cursor:pointer}
+.fee-agree input{margin-top:5px;accent-color:var(--teal);width:18px;height:18px;flex:none}
+.fee-agree a,.fee-alt a{color:var(--teal)}
+.fee-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.fee-btns .btn[disabled]{opacity:.45;cursor:not-allowed}
+.fee-alt{margin-top:16px;font-size:.92rem;color:var(--muted)}
+.fee-x{position:absolute;right:14px;top:12px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:none;font-size:1.5rem;line-height:1;cursor:pointer;color:var(--text)}
+.fee-note{grid-column:1/-1;font-size:.92rem;color:var(--muted);background:rgba(15,110,92,.08);border-radius:12px;padding:10px 14px;margin-bottom:6px}
+@media (max-width:520px){.fee{padding:28px 20px 20px}}
+
 </style>
 </head>
 <body>
@@ -797,7 +818,8 @@ footer{padding-bottom:28px}
       <details class="dd"><summary><span class="qn">02</span>What do I get from a 1:1?</summary><div class="dd-body"><p>A written readiness report within 5 working days and a 90-day plan covering your funding route, investor story and go-to-market.</p></div></details>
       <details class="dd"><summary><span class="qn">03</span>Do you guarantee funding?</summary><div class="dd-body"><p>No. Investors make their own decisions, and anyone who guarantees funding should be a red flag. Lab to Lucre gets you ready and shows you the right route.</p></div></details>
       <details class="dd"><summary><span class="qn">04</span>Do you sell investor lists or charge to pitch?</summary><div class="dd-body"><p>No. What you get is the written report and the 90-day plan.</p></div></details>
-      <details class="dd"><summary><span class="qn">05</span>How do I start?</summary><div class="dd-body"><p>Fill in the form below with your stage and question. Megha reads every query and replies by email.</p></div></details>
+      <details class="dd"><summary><span class="qn">05</span>How much does a 1:1 cost?</summary><div class="dd-body"><p>&#8377;3,000 per hour, paid before the session. Megha sends the payment details by email when she confirms your slot. A booked session can be rescheduled once; payments are not refunded.</p></div></details>
+      <details class="dd"><summary><span class="qn">06</span>How do I start?</summary><div class="dd-body"><p>Fill in the form below with your stage and question. Megha reads every query and replies by email.</p></div></details>
     </div>
   </div>
 </section>
@@ -843,6 +865,23 @@ footer{padding-bottom:28px}
 </section>
 </main>
 
+<div class="fee-back" id="feeBack" hidden>
+  <div class="fee" role="dialog" aria-modal="true" aria-labelledby="feeTitle" aria-describedby="feeDesc" id="feeBox">
+    <p class="eyebrow" style="margin-bottom:12px">Before you book</p>
+    <h2 id="feeTitle">1:1 advisory session</h2>
+    <p class="fee-price"><b>&#8377;3,000</b> <span>per hour</span></p>
+    <ul class="fee-terms" id="feeDesc">
+      <li><b>Pay before the session.</b> After you send your details, Megha confirms your slot by email with the payment details. Your slot is booked once payment is received.</li>
+      <li><b>Rescheduling:</b> you can move a booked session once, if you tell Megha before it starts.</li>
+      <li><b>No refunds</b> once paid, including for missed sessions.</li>
+      <li>Every session ends with written next steps. No funding outcome is guaranteed.</li>
+    </ul>
+    <label class="fee-agree"><input type="checkbox" id="feeAgree"> <span>I agree to the &#8377;3,000/hour fee and the <a href="terms.html#refunds" target="_blank" rel="noopener">terms and refund policy</a>.</span></label>
+    <div class="fee-btns"><button type="button" class="btn btn-ink" id="feeOk" disabled>Agree and continue <span class="ar" aria-hidden="true">&#8599;</span></button><button type="button" class="btn btn-line" id="feeNo">Not now</button></div>
+    <p class="fee-alt">Investor, recruiter or just saying hello? <a href="mailto:telkar.megha24@gmail.com">Email Megha directly</a>.</p>
+    <button type="button" class="fee-x" id="feeX" aria-label="Close">&times;</button>
+  </div>
+</div>
 <div class="privacy" id="privacy" role="region" aria-label="Privacy choices"><p>Can this site count your visit? It stores a random ID in your browser and records pages viewed and the site you came from, to see what helps founders. Nothing is recorded unless you say yes. <a href="privacy.html#storage">Cookie and storage policy</a></p><div class="pc-btns"><button type="button" class="btn btn-ink" id="consentYes">Accept</button><button type="button" class="btn btn-line" id="consentNo">Decline</button></div></div>
 <button class="totop" id="totop" type="button" aria-label="Back to top">&#8593;</button>
 <footer>
@@ -982,11 +1021,12 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     if (Date.now() - last < 60000) { note.textContent = 'You just sent a message. Please wait a minute before sending another.'; return; }
     var name = val('name').slice(0, 100), email = val('email').slice(0, 150), msg0 = val('msg').slice(0, 2000);
     var picked = Array.prototype.map.call(document.querySelectorAll('input[name=svc]:checked'), function (c) { return c.value; }).filter(function (v) { return SVCS.indexOf(v) > -1; });
-    var msg = msg0 ? ('Service wanted: ' + (picked.join(', ') || 'none selected') + ' | Stage: ' + pick(val('stage'), STAGES) + '\n\n' + msg0) : '';
+    var msg = msg0 ? ('Service wanted: ' + (picked.join(', ') || 'none selected') + ' | Stage: ' + pick(val('stage'), STAGES) + ' | Fee agreed: Rs 3,000/hour, pay before session' + '\n\n' + msg0) : '';
     var okEmail = /^[^\s@<>"']+@[^\s@<>"']+\.[a-z]{2,}$/i.test(email);
     bad('name', !name); bad('email', !okEmail); bad('msg', !msg0);
     if (!name || !okEmail || !msg) { note.textContent = 'Enter your name, a valid email and your question.'; (document.querySelector('#form [aria-invalid=true]') || form).focus(); return; }
     if (!picked.length) { note.textContent = 'Please choose at least one service (or "Not sure yet").'; document.querySelector('input[name=svc]').focus(); return; }
+    if (window.__feeGate && !window.__feeGate(function () { form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event('submit', { cancelable: true })); })) { note.textContent = 'Please agree to the 1:1 fee first.'; return; }
     var cb = document.getElementById('consent');
     if (!cb.checked) { note.textContent = 'Please tick the box so your details can be saved.'; bad('consent', true); cb.focus(); return; }
     bad('consent', false);
@@ -1257,6 +1297,31 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 (function(){var g=document.getElementById('giant'),w=document.getElementById('gw');if(!g||!w)return;
   function fit(){w.style.fontSize='100px';var k=g.clientWidth/w.scrollWidth;w.style.fontSize=Math.floor(100*k*0.99)+'px';}
   fit();addEventListener('resize',fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);})();
+
+// ---- fee agreement before booking (₹3,000/hour) ----
+(function(){
+  var back=document.getElementById('feeBack'),box=document.getElementById('feeBox'),chk=document.getElementById('feeAgree'),ok=document.getElementById('feeOk'),form=document.getElementById('form');
+  if(!back||!form)return;
+  function agreed(){try{return sessionStorage.getItem('fee_ok')==='yes'}catch(e){return window.__feeOk===true}}
+  function setAgreed(){try{sessionStorage.setItem('fee_ok','yes')}catch(e){}window.__feeOk=true;}
+  var opener=null,after=null;
+  function open(fn){opener=document.activeElement;after=fn||null;chk.checked=false;ok.disabled=true;back.hidden=false;document.body.style.overflow='hidden';chk.focus();}
+  function close(){back.hidden=true;document.body.style.overflow='';if(opener&&opener.focus)opener.focus();}
+  chk.addEventListener('change',function(){ok.disabled=!chk.checked;});
+  ok.addEventListener('click',function(){if(!chk.checked)return;setAgreed();markForm();back.hidden=true;document.body.style.overflow='';
+    var fn=after;after=null;if(fn)fn();else{document.getElementById('contact').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});setTimeout(function(){document.getElementById('name').focus({preventScroll:true});},500);}});
+  document.getElementById('feeNo').addEventListener('click',close);
+  document.getElementById('feeX').addEventListener('click',close);
+  back.addEventListener('click',function(e){if(e.target===back)close();});
+  document.addEventListener('keydown',function(e){if(back.hidden)return;if(e.key==='Escape'){close();return;}
+    if(e.key==='Tab'){var f=box.querySelectorAll('a[href],button:not([disabled]),input');var a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}}});
+  // every link to the contact section asks first
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href="#contact"]');if(!a||agreed())return;e.preventDefault();var qs=a.id==='qShare';open(qs?function(){a.click();}:null);},true);
+  // a note in the form once agreed
+  function markForm(){if(form.querySelector('.fee-note'))return;var n=document.createElement('p');n.className='fee-note';n.innerHTML='&#10003; You agreed to the 1:1 fee of &#8377;3,000 per hour, paid before the session.';form.insertBefore(n,form.querySelector('label[for=name]'));}
+  if(agreed())markForm();
+  window.__feeGate=function(go){if(agreed())return true;open(go);return false;};
+})();
 </script>
 </body>
 </html>
