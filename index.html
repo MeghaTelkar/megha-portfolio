@@ -818,7 +818,7 @@ footer{padding-bottom:28px}
       <details class="dd"><summary><span class="qn">02</span>What do I get from a 1:1?</summary><div class="dd-body"><p>A written readiness report within 5 working days and a 90-day plan covering your funding route, investor story and go-to-market.</p></div></details>
       <details class="dd"><summary><span class="qn">03</span>Do you guarantee funding?</summary><div class="dd-body"><p>No. Investors make their own decisions, and anyone who guarantees funding should be a red flag. Lab to Lucre gets you ready and shows you the right route.</p></div></details>
       <details class="dd"><summary><span class="qn">04</span>Do you sell investor lists or charge to pitch?</summary><div class="dd-body"><p>No. What you get is the written report and the 90-day plan.</p></div></details>
-      <details class="dd"><summary><span class="qn">05</span>How much does a 1:1 cost?</summary><div class="dd-body"><p>&#8377;3,000 per hour, paid before the session. Megha sends the payment details by email when she confirms your slot. A booked session can be rescheduled once; payments are not refunded.</p></div></details>
+      <details class="dd"><summary><span class="qn">05</span>How much does a 1:1 cost?</summary><div class="dd-body"><p>&#8377;3,000 per hour, paid before the session. The payment details arrive by automatic email as soon as you send the booking form. A booked session can be rescheduled once; payments are not refunded.</p></div></details>
       <details class="dd"><summary><span class="qn">06</span>How do I start?</summary><div class="dd-body"><p>Fill in the form below with your stage and question. Megha reads every query and replies by email.</p></div></details>
     </div>
   </div>
@@ -871,7 +871,7 @@ footer{padding-bottom:28px}
     <h2 id="feeTitle">1:1 advisory session</h2>
     <p class="fee-price"><b>&#8377;3,000</b> <span>per hour</span></p>
     <ul class="fee-terms" id="feeDesc">
-      <li><b>Pay before the session.</b> After you send your details, Megha confirms your slot by email with the payment details. Your slot is booked once payment is received.</li>
+      <li><b>Pay before the session.</b> As soon as you send your details, you get an automatic email with the payment details. Your slot is confirmed once payment is received.</li>
       <li><b>Rescheduling:</b> you can move a booked session once, if you tell Megha before it starts.</li>
       <li><b>No refunds</b> once paid, including for missed sessions.</li>
       <li>Every session ends with written next steps. No funding outcome is guaranteed.</li>
@@ -1030,14 +1030,14 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     var cb = document.getElementById('consent');
     if (!cb.checked) { note.textContent = 'Please tick the box so your details can be saved.'; bad('consent', true); cb.focus(); return; }
     bad('consent', false);
-    var d = { token: TOKEN, type: 'contact', t: new Date().toISOString(), name: name, email: email, org: val('org').slice(0, 150), role: pick(val('role'), ROLES), message: msg, consent: 'Yes', source: src, device: dev, url: pageUrl };
+    var d = { token: TOKEN, type: 'contact', t: new Date().toISOString(), name: name, email: email, org: val('org').slice(0, 150), role: pick(val('role'), ROLES), message: msg, consent: 'Yes', fee: (window.__feeGate && window.__feeGate(null)) ? 'agreed' : '', source: src, device: dev, url: pageUrl };
     var btn = form.querySelector('button[type=submit]'); btn.disabled = true; note.textContent = 'Sending...';
     var finish = function (m, good) { btn.disabled = false; note.textContent = m; if (good) { form.reset(); ev('contact_submit', d.role + ' | ' + picked.join(', '), 'contact'); } };
     var body = JSON.stringify(d);
     fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, body: body })
       .then(function (r) { return r.json(); })
       .then(function (j) {
-        if (j && j.ok) { store('l', 'last_submit', String(Date.now())); finish('Thank you. Your message has been received and Megha will reply by email.', true); }
+        if (j && j.ok) { store('l', 'last_submit', String(Date.now())); finish(j.emailed ? 'Thank you. Check your inbox: the payment details and next steps are on their way.' : 'Thank you. Your message has been received and Megha will reply by email.', true); }
         else finish('Your message could not be saved. Please email telkar.megha24@gmail.com directly.', false);
       })
       .catch(function () {
@@ -1318,9 +1318,9 @@ document.getElementById('yr').textContent = new Date().getFullYear();
   // every link to the contact section asks first
   document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href="#contact"]');if(!a||agreed())return;e.preventDefault();var qs=a.id==='qShare';open(qs?function(){a.click();}:null);},true);
   // a note in the form once agreed
-  function markForm(){if(form.querySelector('.fee-note'))return;var n=document.createElement('p');n.className='fee-note';n.innerHTML='&#10003; You agreed to the 1:1 fee of &#8377;3,000 per hour, paid before the session.';form.insertBefore(n,form.querySelector('label[for=name]'));}
+  function markForm(){if(form.querySelector('.fee-note'))return;var n=document.createElement('p');n.className='fee-note';n.innerHTML='&#10003; You agreed to the 1:1 fee of &#8377;3,000 per hour, paid before the session. The payment details will arrive by email after you send this form.';form.insertBefore(n,form.querySelector('label[for=name]'));}
   if(agreed())markForm();
-  window.__feeGate=function(go){if(agreed())return true;open(go);return false;};
+  window.__feeGate=function(go){if(agreed())return true;if(go!==null)open(go);return false;};
 })();
 </script>
 </body>
