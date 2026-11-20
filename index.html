@@ -495,6 +495,25 @@ footer{padding-bottom:28px}
 .fee-note{grid-column:1/-1;font-size:.92rem;color:var(--muted);background:rgba(15,110,92,.08);border-radius:12px;padding:10px 14px;margin-bottom:6px}
 @media (max-width:520px){.fee{padding:28px 20px 20px}}
 
+/* investors */
+.inv .lead{margin-bottom:8px}
+.inv-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);margin-top:48px}
+.inv-grid article{padding:32px 28px 32px 0;border-bottom:1px solid var(--line)}
+.inv-grid article+article{padding-left:28px;border-left:1px solid var(--line)}
+.inv-grid .k{display:block;font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;color:var(--teal);margin-bottom:18px}
+.inv-grid h3{font-size:1.2rem;margin-bottom:12px}
+.inv-grid p{color:var(--muted);font-size:.98rem}
+.inv-how{display:grid;grid-template-columns:5fr 7fr;gap:56px;margin-top:64px}
+.inv-who{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
+.inv-who li{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:10px 16px;color:var(--navy);background:var(--white)}
+.inv-steps{list-style:none;counter-reset:s;border-top:1px solid var(--line)}
+.inv-steps li{counter-increment:s;display:grid;grid-template-columns:56px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--line);color:var(--muted)}
+.inv-steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;color:var(--teal);padding-top:4px}
+.inv-steps b{color:var(--text);font-weight:600}
+@media (max-width:1020px){.inv-grid{grid-template-columns:1fr 1fr}.inv-grid article:nth-child(3){padding-left:0;border-left:0}}
+@media (max-width:860px){.inv-how{grid-template-columns:1fr;gap:36px;margin-top:48px}}
+@media (max-width:560px){.inv-grid{grid-template-columns:1fr}.inv-grid article,.inv-grid article+article{padding:26px 0;border-left:0}}
+
 </style>
 </head>
 <body>
@@ -508,6 +527,7 @@ footer{padding-bottom:28px}
       <li><a href="#why-me">Why us</a></li>
       <li><a href="#check">Readiness check</a></li>
       <li><a href="#about">Founder</a></li>
+      <li><a href="#investors">Investors</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -806,6 +826,35 @@ footer{padding-bottom:28px}
   </div>
 </section>
 
+<section id="investors" class="inv paper" aria-labelledby="h-investors">
+  <div class="wrap">
+    <p class="eyebrow">For VCs, angels and funds</p>
+    <h2 id="h-investors" class="rvl"><span class="ln" style="--li:0"><span>Meet science founders</span></span><span class="ln" style="--li:1"><span class="muted-2">who did the homework.</span></span></h2>
+    <p class="lead rv">Lab to Lucre prepares early-stage biotech, life-science and deep-tech founders before they pitch. Partner with us to see investor-ready startups that fit your thesis, with the science explained in plain business terms.</p>
+    <div class="inv-grid">
+      <article class="rv"><span class="k">01</span><h3>Deal flow that fits</h3><p>Founders matched to your sectors, stage and cheque size. Each comes with a readiness scorecard on team, story, unit economics, market and traction.</p></article>
+      <article class="rv"><span class="k">02</span><h3>Science, translated</h3><p>A plain-language note on the technology, the market and the open risks, so your first call goes straight to the questions that matter.</p></article>
+      <article class="rv"><span class="k">03</span><h3>Support for your portfolio</h3><p>Go-to-market plans, grant routes and investor-update discipline for the startups you have already backed.</p></article>
+      <article class="rv"><span class="k">04</span><h3>Founder sessions together</h3><p>Pitch days, office hours and demo sessions co-hosted with Lab to Lucre. Megha has run 30+ founder events and made 20+ investor and grant introductions.</p></article>
+    </div>
+    <div class="inv-how">
+      <div>
+        <p class="eyebrow">Who we work with</p>
+        <ul class="inv-who"><li>Venture capital funds</li><li>Angel networks</li><li>Family offices</li><li>Corporate venture arms</li><li>Incubators and accelerators</li><li>Grant and CSR programmes</li></ul>
+      </div>
+      <div>
+        <p class="eyebrow">How onboarding works</p>
+        <ol class="inv-steps">
+          <li><span><b>Share your thesis.</b> Sectors, stage, cheque size and geography, in the form below.</span></li>
+          <li><span><b>A short intro call</b> with Megha to agree what a good match looks like.</span></li>
+          <li><span><b>Receive matched founders.</b> Profiles are shared only with each founder's consent, and founders never pay to pitch.</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="btns rv"><a class="btn btn-ink" href="#contact" data-role="Investor" id="invJoin">Join the investor network <span class="ar" aria-hidden="true">&#8599;</span></a><a class="btn btn-line" href="mailto:telkar.megha24@gmail.com?subject=Investor%20partnership%20with%20Lab%20to%20Lucre">Email Megha</a></div>
+  </div>
+</section>
+
 <section id="faq" class="faq" aria-labelledby="h-faq">
   <div class="wrap faq-grid">
     <div class="faq-side">
@@ -818,7 +867,7 @@ footer{padding-bottom:28px}
       <details class="dd"><summary><span class="qn">02</span>What do I get from a 1:1?</summary><div class="dd-body"><p>A written readiness report within 5 working days and a 90-day plan covering your funding route, investor story and go-to-market.</p></div></details>
       <details class="dd"><summary><span class="qn">03</span>Do you guarantee funding?</summary><div class="dd-body"><p>No. Investors make their own decisions, and anyone who guarantees funding should be a red flag. Lab to Lucre gets you ready and shows you the right route.</p></div></details>
       <details class="dd"><summary><span class="qn">04</span>Do you sell investor lists or charge to pitch?</summary><div class="dd-body"><p>No. What you get is the written report and the 90-day plan.</p></div></details>
-      <details class="dd"><summary><span class="qn">05</span>How much does a 1:1 cost?</summary><div class="dd-body"><p>&#8377;3,000 per hour, paid before the session. The payment details arrive by automatic email as soon as you send the booking form. A booked session can be rescheduled once; payments are not refunded.</p></div></details>
+      <details class="dd"><summary><span class="qn">05</span>How much does a 1:1 cost?</summary><div class="dd-body"><p>It depends on your stage and the help you need, so every fee is decided case by case. Send the booking form and Megha will email you a quote; you pay before the session. A booked session can be rescheduled once; payments are not refunded.</p></div></details>
       <details class="dd"><summary><span class="qn">06</span>How do I start?</summary><div class="dd-body"><p>Fill in the form below with your stage and question. Megha reads every query and replies by email.</p></div></details>
     </div>
   </div>
@@ -850,6 +899,7 @@ footer{padding-bottom:28px}
         <label class="chip"><input type="checkbox" name="svc" value="Investor readiness"><span>Investor readiness</span></label>
         <label class="chip"><input type="checkbox" name="svc" value="Go-to-market"><span>Go-to-market</span></label>
         <label class="chip"><input type="checkbox" name="svc" value="1:1 advisory session"><span>1:1 advisory session</span></label>
+        <label class="chip"><input type="checkbox" name="svc" value="Investor partnership"><span>Investor partnership</span></label>
         <label class="chip"><input type="checkbox" name="svc" value="Not sure yet"><span>Not sure yet</span></label>
       </fieldset>
       <label for="stage">Stage of your startup</label>
@@ -869,16 +919,17 @@ footer{padding-bottom:28px}
   <div class="fee" role="dialog" aria-modal="true" aria-labelledby="feeTitle" aria-describedby="feeDesc" id="feeBox">
     <p class="eyebrow" style="margin-bottom:12px">Before you book</p>
     <h2 id="feeTitle">1:1 advisory session</h2>
-    <p class="fee-price"><b>&#8377;3,000</b> <span>per hour</span></p>
+    <p class="fee-price"><b>Fee decided case by case</b></p>
     <ul class="fee-terms" id="feeDesc">
-      <li><b>Pay before the session.</b> As soon as you send your details, you get an automatic email with the payment details. Your slot is confirmed once payment is received.</li>
+      <li><b>A quote for your needs.</b> The fee depends on your stage and the help you need. Megha confirms it by email before anything is booked.</li>
+      <li><b>Pay before the session.</b> Once you send your details, you get an automatic email with the next steps and payment options. Your slot is confirmed after you accept the quote and pay.</li>
       <li><b>Rescheduling:</b> you can move a booked session once, if you tell Megha before it starts.</li>
       <li><b>No refunds</b> once paid, including for missed sessions.</li>
       <li>Every session ends with written next steps. No funding outcome is guaranteed.</li>
     </ul>
-    <label class="fee-agree"><input type="checkbox" id="feeAgree"> <span>I agree to the &#8377;3,000/hour fee and the <a href="terms.html#refunds" target="_blank" rel="noopener">terms and refund policy</a>.</span></label>
+    <label class="fee-agree"><input type="checkbox" id="feeAgree"> <span>I understand the fee is quoted case by case and paid before the session, and I agree to the <a href="terms.html#refunds" target="_blank" rel="noopener">terms and refund policy</a>.</span></label>
     <div class="fee-btns"><button type="button" class="btn btn-ink" id="feeOk" disabled>Agree and continue <span class="ar" aria-hidden="true">&#8599;</span></button><button type="button" class="btn btn-line" id="feeNo">Not now</button></div>
-    <p class="fee-alt">Investor, recruiter or just saying hello? <a href="mailto:telkar.megha24@gmail.com">Email Megha directly</a>.</p>
+    <p class="fee-alt">Investor or fund? <a href="#investors" id="feeInv">Partner with Lab to Lucre</a>. Recruiter or just saying hello? <a href="mailto:telkar.megha24@gmail.com">Email Megha directly</a>.</p>
     <button type="button" class="fee-x" id="feeX" aria-label="Close">&times;</button>
   </div>
 </div>
@@ -1011,7 +1062,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
   function val(id) { return (document.getElementById(id).value || '').trim(); }
   var ROLES = ['Founder','Investor','Recruiter or hiring manager','Collaborator or partner','Other'];
   var STAGES = ['Idea','Prototype or lab stage','First customers or pilots','Preparing to raise','Already raising','Not a startup / other'];
-  var SVCS = ['Funding strategy','Investor readiness','Go-to-market','1:1 advisory session','Not sure yet'];
+  var SVCS = ['Funding strategy','Investor readiness','Go-to-market','1:1 advisory session','Investor partnership','Not sure yet'];
   function pick(v, list) { return list.indexOf(v) > -1 ? v : ''; }
   function bad(id, on) { var el = document.getElementById(id); if (el) { if (on) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid'); } }
   form.addEventListener('submit', function (e) {
@@ -1021,7 +1072,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     if (Date.now() - last < 60000) { note.textContent = 'You just sent a message. Please wait a minute before sending another.'; return; }
     var name = val('name').slice(0, 100), email = val('email').slice(0, 150), msg0 = val('msg').slice(0, 2000);
     var picked = Array.prototype.map.call(document.querySelectorAll('input[name=svc]:checked'), function (c) { return c.value; }).filter(function (v) { return SVCS.indexOf(v) > -1; });
-    var msg = msg0 ? ('Service wanted: ' + (picked.join(', ') || 'none selected') + ' | Stage: ' + pick(val('stage'), STAGES) + ' | Fee agreed: Rs 3,000/hour, pay before session' + '\n\n' + msg0) : '';
+    var msg = msg0 ? ('Service wanted: ' + (picked.join(', ') || 'none selected') + ' | Stage: ' + pick(val('stage'), STAGES) + ((window.__feeGate && window.__feeGate(null) && (val('role') === 'Founder' || val('role') === 'Other')) ? ' | Fee: quoted case by case, pay before session' : '') + '\n\n' + msg0) : '';
     var okEmail = /^[^\s@<>"']+@[^\s@<>"']+\.[a-z]{2,}$/i.test(email);
     bad('name', !name); bad('email', !okEmail); bad('msg', !msg0);
     if (!name || !okEmail || !msg) { note.textContent = 'Enter your name, a valid email and your question.'; (document.querySelector('#form [aria-invalid=true]') || form).focus(); return; }
@@ -1030,14 +1081,14 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     var cb = document.getElementById('consent');
     if (!cb.checked) { note.textContent = 'Please tick the box so your details can be saved.'; bad('consent', true); cb.focus(); return; }
     bad('consent', false);
-    var d = { token: TOKEN, type: 'contact', t: new Date().toISOString(), name: name, email: email, org: val('org').slice(0, 150), role: pick(val('role'), ROLES), message: msg, consent: 'Yes', fee: (window.__feeGate && window.__feeGate(null)) ? 'agreed' : '', source: src, device: dev, url: pageUrl };
+    var d = { token: TOKEN, type: 'contact', t: new Date().toISOString(), name: name, email: email, org: val('org').slice(0, 150), role: pick(val('role'), ROLES), message: msg, consent: 'Yes', fee: (window.__feeGate && window.__feeGate(null) && (val('role') === 'Founder' || val('role') === 'Other')) ? 'agreed' : '', source: src, device: dev, url: pageUrl };
     var btn = form.querySelector('button[type=submit]'); btn.disabled = true; note.textContent = 'Sending...';
     var finish = function (m, good) { btn.disabled = false; note.textContent = m; if (good) { form.reset(); ev('contact_submit', d.role + ' | ' + picked.join(', '), 'contact'); } };
     var body = JSON.stringify(d);
     fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, body: body })
       .then(function (r) { return r.json(); })
       .then(function (j) {
-        if (j && j.ok) { store('l', 'last_submit', String(Date.now())); finish(j.emailed ? 'Thank you. Check your inbox: the payment details and next steps are on their way.' : 'Thank you. Your message has been received and Megha will reply by email.', true); }
+        if (j && j.ok) { store('l', 'last_submit', String(Date.now())); finish(j.emailed ? 'Thank you. Check your inbox: the next steps are on their way, and Megha will send your quote.' : 'Thank you. Your message has been received and Megha will reply by email.', true); }
         else finish('Your message could not be saved. Please email telkar.megha24@gmail.com directly.', false);
       })
       .catch(function () {
@@ -1298,7 +1349,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
   function fit(){w.style.fontSize='100px';var k=g.clientWidth/w.scrollWidth;w.style.fontSize=Math.floor(100*k*0.99)+'px';}
   fit();addEventListener('resize',fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);})();
 
-// ---- fee agreement before booking (₹3,000/hour) ----
+// ---- fee agreement before booking (fee quoted case by case) ----
 (function(){
   var back=document.getElementById('feeBack'),box=document.getElementById('feeBox'),chk=document.getElementById('feeAgree'),ok=document.getElementById('feeOk'),form=document.getElementById('form');
   if(!back||!form)return;
@@ -1316,11 +1367,21 @@ document.getElementById('yr').textContent = new Date().getFullYear();
   document.addEventListener('keydown',function(e){if(back.hidden)return;if(e.key==='Escape'){close();return;}
     if(e.key==='Tab'){var f=box.querySelectorAll('a[href],button:not([disabled]),input');var a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}}});
   // every link to the contact section asks first
-  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href="#contact"]');if(!a||agreed())return;e.preventDefault();var qs=a.id==='qShare';open(qs?function(){a.click();}:null);},true);
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href="#contact"]');if(!a||agreed()||a.hasAttribute('data-role'))return;e.preventDefault();var qs=a.id==='qShare';open(qs?function(){a.click();}:null);},true);
   // a note in the form once agreed
-  function markForm(){if(form.querySelector('.fee-note'))return;var n=document.createElement('p');n.className='fee-note';n.innerHTML='&#10003; You agreed to the 1:1 fee of &#8377;3,000 per hour, paid before the session. The payment details will arrive by email after you send this form.';form.insertBefore(n,form.querySelector('label[for=name]'));}
+  function markForm(){if(form.querySelector('.fee-note'))return;var n=document.createElement('p');n.className='fee-note';n.innerHTML='&#10003; You agreed to the 1:1 terms: the fee is quoted case by case and paid before the session. Megha will email you after you send this form.';form.insertBefore(n,form.querySelector('label[for=name]'));}
   if(agreed())markForm();
-  window.__feeGate=function(go){if(agreed())return true;if(go!==null)open(go);return false;};
+  // the fee applies to 1:1 bookings only: investors, recruiters and partners skip it
+  function isBooking(){var r=document.getElementById('role');return !r||r.value==='Founder'||r.value==='Other';}
+  window.__feeGate=function(go){if(!isBooking()||agreed())return true;if(go!==null)open(go);return false;};
+  var inv=document.getElementById('feeInv');if(inv)inv.addEventListener('click',function(){back.hidden=true;document.body.style.overflow='';});
+  // "Join the investor network" pre-fills the form for an investor
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-role]');if(!a)return;
+    var r=document.getElementById('role');if(r)r.value=a.getAttribute('data-role');
+    var c=form.querySelector('input[name=svc][value="Investor partnership"]');if(c)c.checked=true;
+    var m=document.getElementById('msg');if(m&&!m.value)m.placeholder='Your thesis: sectors, stage, cheque size and geography. What kind of founders do you want to meet?';
+    setTimeout(function(){document.getElementById('name').focus({preventScroll:true});},600);});
+  var role=document.getElementById('role');if(role)role.addEventListener('change',function(){var m=document.getElementById('msg');if(m&&role.value==='Investor'&&!m.value)m.placeholder='Your thesis: sectors, stage, cheque size and geography. What kind of founders do you want to meet?';});
 })();
 </script>
 </body>
