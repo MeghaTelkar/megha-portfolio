@@ -514,6 +514,32 @@ footer{padding-bottom:28px}
 @media (max-width:860px){.inv-how{grid-template-columns:1fr;gap:36px;margin-top:48px}}
 @media (max-width:560px){.inv-grid{grid-template-columns:1fr}.inv-grid article,.inv-grid article+article{padding:26px 0;border-left:0}}
 
+/* advisors */
+.adv-form{background:var(--paper);border-radius:24px;padding:32px 36px;margin-top:40px;display:grid;gap:4px}
+.adv-form .opts{margin-top:0}
+.adv-form .opts+.opts{margin-top:14px}
+.adv-hint{font-size:.92rem;color:var(--muted);margin-top:4px;max-width:70ch}
+.adv-hint b{color:var(--text);font-weight:600}
+.adv-form .btn{justify-self:start;margin-top:18px}
+.adv-box{max-width:720px}
+.adv-picked{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin:4px 0 14px}
+.adv-scroll{max-height:38vh;overflow:auto;border:1px solid var(--line);border-radius:14px;background:var(--white);padding:4px 18px}
+.adv-terms{padding-left:20px}
+.adv-terms li{padding:10px 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:.94rem}
+.adv-terms li:last-child{border-bottom:0}
+.adv-terms b{color:var(--text)}
+.adv-terms a{color:var(--teal)}
+.adv-sign{display:grid;gap:4px;margin-top:18px}
+.adv-sign label{font-size:.9rem;font-weight:600;margin-top:10px}
+.adv-sign input[type=text],.adv-sign input[type=email],.adv-sign input[type=tel],.adv-sign textarea{width:100%;font:inherit;font-size:1rem;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--white);color:var(--text)}
+.adv-sign textarea{min-height:90px;resize:vertical}
+.adv-sign input:focus,.adv-sign textarea:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:transparent}
+.adv-sign [aria-invalid=true]{border-color:#B42318;outline:1px solid #B42318}
+.adv-sign .fee-agree{font-weight:400}
+.adv-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.adv-grid>div{display:grid;gap:4px}
+@media (max-width:640px){.adv-form{padding:24px 20px}.adv-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -829,7 +855,7 @@ footer{padding-bottom:28px}
 <section id="investors" class="inv paper" aria-labelledby="h-investors">
   <div class="wrap">
     <p class="eyebrow">For VCs, angels and funds</p>
-    <h2 id="h-investors" class="rvl"><span class="ln" style="--li:0"><span>Meet science founders</span></span><span class="ln" style="--li:1"><span class="muted-2">who did the homework.</span></span></h2>
+    <h2 id="h-investors" class="rvl"><span class="ln" style="--li:0"><span>Join the</span></span><span class="ln" style="--li:1"><span class="muted-2">investor network.</span></span></h2>
     <p class="lead rv">Lab to Lucre prepares early-stage biotech, life-science and deep-tech founders before they pitch. Partner with us to see investor-ready startups that fit your thesis, with the science explained in plain business terms.</p>
     <div class="inv-grid">
       <article class="rv"><span class="k">01</span><h3>Deal flow that fits</h3><p>Founders matched to your sectors, stage and cheque size. Each comes with a readiness scorecard on team, story, unit economics, market and traction.</p></article>
@@ -845,13 +871,44 @@ footer{padding-bottom:28px}
       <div>
         <p class="eyebrow">How onboarding works</p>
         <ol class="inv-steps">
-          <li><span><b>Share your thesis.</b> Sectors, stage, cheque size and geography, in the form below.</span></li>
+          <li><span><b>Share your thesis.</b> Sectors, stage, cheque size and geography, in a short form.</span></li>
           <li><span><b>A short intro call</b> with Megha to agree what a good match looks like.</span></li>
           <li><span><b>Receive matched founders.</b> Profiles are shared only with each founder's consent, and founders never pay to pitch.</span></li>
         </ol>
       </div>
     </div>
     <div class="btns rv"><a class="btn btn-ink" href="#contact" data-role="Investor" id="invJoin">Join the investor network <span class="ar" aria-hidden="true">&#8599;</span></a><a class="btn btn-line" href="mailto:telkar.megha24@gmail.com?subject=Investor%20partnership%20with%20Lab%20to%20Lucre">Email Megha</a></div>
+  </div>
+</section>
+
+<section id="advisors" aria-labelledby="h-advisors">
+  <div class="wrap">
+    <p class="eyebrow">For experts and operators</p>
+    <h2 id="h-advisors" class="rvl"><span class="ln" style="--li:0"><span>Join as an</span></span><span class="ln" style="--li:1"><span class="muted-2">advisor.</span></span></h2>
+    <p class="lead rv">Guide early-stage founders in the industries you know best. Pick your industries and your advisor type, then read and sign the term sheet.</p>
+    <form id="advForm" class="adv-form rv" novalidate>
+      <fieldset class="opts" id="advInds"><legend>1. Industries you can advise on (pick one or more)</legend>
+        <label class="chip"><input type="checkbox" name="ind" value="Biotechnology"><span>Biotechnology</span></label>
+        <label class="chip"><input type="checkbox" name="ind" value="Pharma and drug discovery"><span>Pharma and drug discovery</span></label>
+        <label class="chip"><input type="checkbox" name="ind" value="MedTech and diagnostics"><span>MedTech and diagnostics</span></label>
+        <label class="chip"><input type="checkbox" name="ind" value="HealthTech"><span>HealthTech</span></label>
+        <label class="chip"><input type="checkbox" name="ind" value="Agri-biotech and food tech"><span>Agri-biotech and food tech</span></label>
+        <label class="chip"><input type="checkbox" name="ind" value="Climate and clean tech"><span>Climate and clean tech</span></label>
+        <label class="chip"><input type="checkbox" name="ind" value="Deep tech and AI"><span>Deep tech and AI</span></label>
+        <label class="chip"><input type="checkbox" name="ind" value="SaaS and IT"><span>SaaS and IT</span></label>
+        <label class="chip"><input type="checkbox" name="ind" value="Fintech"><span>Fintech</span></label>
+        <label class="chip"><input type="checkbox" name="ind" value="Consumer and D2C"><span>Consumer and D2C</span></label>
+        <label class="chip"><input type="checkbox" name="ind" value="Manufacturing and hardware"><span>Manufacturing and hardware</span></label>
+        <label class="chip"><input type="checkbox" name="ind" value="Other"><span>Other</span></label>
+      </fieldset>
+      <fieldset class="opts" id="advTypes"><legend>2. Advisor type</legend>
+        <label class="chip"><input type="radio" name="atype" value="Business Advisor"><span>Business Advisor</span></label>
+        <label class="chip"><input type="radio" name="atype" value="Technical Advisor"><span>Technical Advisor</span></label>
+        <p class="adv-hint"><b>Business:</b> business model, pricing, go-to-market, fundraising, hiring and operations. <b>Technical:</b> science and product review, R&amp;D and scale-up, regulatory pathways, technical notes for investors.</p>
+      </fieldset>
+      <button class="btn btn-ink" type="submit" id="advOpen">3. Read and sign the term sheet <span class="ar" aria-hidden="true">&#8599;</span></button>
+      <p class="note" id="advNote" role="status"></p>
+    </form>
   </div>
 </section>
 
@@ -931,6 +988,68 @@ footer{padding-bottom:28px}
     <div class="fee-btns"><button type="button" class="btn btn-ink" id="feeOk" disabled>Agree and continue <span class="ar" aria-hidden="true">&#8599;</span></button><button type="button" class="btn btn-line" id="feeNo">Not now</button></div>
     <p class="fee-alt">Investor or fund? <a href="#investors" id="feeInv">Partner with Lab to Lucre</a>. Recruiter or just saying hello? <a href="mailto:telkar.megha24@gmail.com">Email Megha directly</a>.</p>
     <button type="button" class="fee-x" id="feeX" aria-label="Close">&times;</button>
+  </div>
+</div>
+<div class="fee-back" id="advBack" hidden>
+  <div class="fee adv-box" role="dialog" aria-modal="true" aria-labelledby="advTitle" id="advBox">
+    <p class="eyebrow" style="margin-bottom:12px">Lab to Lucre Advisor Network</p>
+    <h2 id="advTitle">Advisory terms</h2>
+    <p class="adv-picked" id="advPicked"></p>
+    <div class="adv-scroll" tabindex="0" aria-label="Term sheet text">
+      <ol class="adv-terms" data-terms="Business Advisor" hidden>
+        <li><b>Parties.</b> Lab to Lucre, a sole proprietorship of Megha S Telkar, Bengaluru, Karnataka ("Lab to Lucre"), and the person accepting below ("Advisor").</li>
+        <li><b>Role.</b> The Advisor guides early-stage startups referred by Lab to Lucre on business matters: business model, pricing and unit economics; go-to-market, sales and partnerships; fundraising strategy, pitch decks and investor conversations; hiring, operations and governance.</li>
+        <li><b>Industries.</b> The Advisor advises only in the industries selected on this form, and Lab to Lucre refers only startups in those industries.</li>
+        <li><b>Engagements.</b> Lab to Lucre proposes each startup engagement by email. The Advisor may accept or decline any engagement, and none starts without the Advisor's written yes.</li>
+        <li><b>Time commitment.</b> Up to 4 hours a month across accepted engagements, unless the Advisor agrees otherwise in writing.</li>
+        <li><b>Compensation and profit sharing.</b> To be discussed and agreed on a call with Megha before any paid engagement starts. Nothing is payable for joining the network.</li>
+        <li><b>Independent advisor.</b> The Advisor is not an employee, partner or agent of Lab to Lucre, and cannot sign or commit on behalf of Lab to Lucre or any startup.</li>
+        <li><b>Confidentiality.</b> The Advisor keeps confidential all non-public information about Lab to Lucre, its clients and their startups (financials, cap tables, pitch decks, customer data and plans), during the term and for 2 years after it ends.</li>
+        <li><b>Intellectual property.</b> Ideas, documents and plans a startup shares stay that startup's property. Advice the Advisor gives a startup may be used freely by that startup.</li>
+        <li><b>Conflicts of interest.</b> The Advisor tells Lab to Lucre in writing, before accepting an engagement, about any interest in a competing business, an investor in the startup, or the startup itself.</li>
+        <li><b>No investment advice or guarantees.</b> The Advisor gives business guidance only, does not promise funding, valuations or outcomes, and does not offer securities to anyone.</li>
+        <li><b>Non-solicitation.</b> During the term and for 12 months after it, the Advisor does not take on a Lab to Lucre client for paid work outside Lab to Lucre without Lab to Lucre's written consent.</li>
+        <li><b>Use of name.</b> Lab to Lucre may list the Advisor's name, photo, title and selected industries on its website and materials. The Advisor may withdraw this consent by email at any time.</li>
+        <li><b>Personal data.</b> The Advisor's details are stored and used as set out in the <a href="privacy.html" target="_blank" rel="noopener">privacy policy</a>, in line with India's Digital Personal Data Protection Act, 2023.</li>
+        <li><b>Term and exit.</b> 12 months from acceptance, renewing automatically. Either side may end it with 30 days' notice by email. Clauses 8, 9, 12 and 14 continue after it ends.</li>
+        <li><b>Governing law.</b> The laws of India. Courts in Bengaluru, Karnataka have exclusive jurisdiction.</li>
+      </ol>
+      <ol class="adv-terms" data-terms="Technical Advisor" hidden>
+        <li><b>Parties.</b> Lab to Lucre, a sole proprietorship of Megha S Telkar, Bengaluru, Karnataka ("Lab to Lucre"), and the person accepting below ("Advisor").</li>
+        <li><b>Role.</b> The Advisor guides early-stage startups referred by Lab to Lucre on technical matters: reviewing the science, technology or product and its readiness; R&amp;D roadmaps, prototyping, scale-up and manufacturing; regulatory and quality pathways (for example CDSCO, ISO or clinical validation); and plain-language technical notes on a startup for Lab to Lucre or, with the startup's consent, its investors.</li>
+        <li><b>Industries.</b> The Advisor advises only in the industries selected on this form, and Lab to Lucre refers only startups in those industries.</li>
+        <li><b>Engagements.</b> Lab to Lucre proposes each startup engagement by email. The Advisor may accept or decline any engagement, and none starts without the Advisor's written yes.</li>
+        <li><b>Time commitment.</b> Up to 4 hours a month across accepted engagements, unless the Advisor agrees otherwise in writing.</li>
+        <li><b>Compensation and profit sharing.</b> To be discussed and agreed on a call with Megha before any paid engagement starts. Nothing is payable for joining the network.</li>
+        <li><b>Independent advisor.</b> The Advisor is not an employee, partner or agent of Lab to Lucre, and cannot sign or commit on behalf of Lab to Lucre or any startup.</li>
+        <li><b>Confidentiality.</b> The Advisor keeps confidential all non-public information about Lab to Lucre, its clients and their startups (lab data, formulations, designs, source code, unpublished results, patent filings, financials and plans), during the term and for 3 years after it ends; trade secrets stay confidential for as long as they remain trade secrets.</li>
+        <li><b>Intellectual property.</b> All technology, data, inventions and know-how a startup shares stay that startup's property. The Advisor does not file patents, publish papers or present on any of it. Any joint invention with a startup is handled under a separate written agreement with that startup, signed before the work starts.</li>
+        <li><b>Prior IP and employer rules.</b> The Advisor keeps ownership of their own prior know-how, confirms that advising does not breach any duty to a current employer or institution, and will not share any third party's confidential information with a startup.</li>
+        <li><b>Conflicts of interest.</b> The Advisor tells Lab to Lucre in writing, before accepting an engagement, about any interest in a competing technology, an investor in the startup, or the startup itself.</li>
+        <li><b>Opinion, not certification.</b> Technical notes are the Advisor's professional opinion based on the information shared. They are not a certification, a regulatory approval or a guarantee of results.</li>
+        <li><b>Non-solicitation.</b> During the term and for 12 months after it, the Advisor does not take on a Lab to Lucre client for paid work outside Lab to Lucre without Lab to Lucre's written consent.</li>
+        <li><b>Use of name.</b> Lab to Lucre may list the Advisor's name, photo, title and selected industries on its website and materials. The Advisor may withdraw this consent by email at any time.</li>
+        <li><b>Personal data.</b> The Advisor's details are stored and used as set out in the <a href="privacy.html" target="_blank" rel="noopener">privacy policy</a>, in line with India's Digital Personal Data Protection Act, 2023.</li>
+        <li><b>Term and exit.</b> 12 months from acceptance, renewing automatically. Either side may end it with 30 days' notice by email. On exit, the Advisor returns or deletes startup materials. Clauses 8, 9, 10, 13 and 15 continue after it ends.</li>
+        <li><b>Governing law.</b> The laws of India. Courts in Bengaluru, Karnataka have exclusive jurisdiction.</li>
+      </ol>
+    </div>
+    <form id="advSign" class="adv-sign" novalidate>
+      <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label for="advWebsite">Leave this empty</label><input id="advWebsite" type="text" tabindex="-1" autocomplete="off"></div>
+      <div class="adv-grid">
+        <div><label for="advName">Full name</label><input id="advName" type="text" autocomplete="name" required maxlength="100"></div>
+        <div><label for="advEmail">Email</label><input id="advEmail" type="email" autocomplete="email" required maxlength="150"></div>
+        <div><label for="advLinkedin">LinkedIn profile</label><input id="advLinkedin" type="text" inputmode="url" placeholder="linkedin.com/in/..." maxlength="200"></div>
+        <div><label for="advPhone">Phone (optional)</label><input id="advPhone" type="tel" autocomplete="tel" maxlength="30"></div>
+      </div>
+      <label for="advQual">Highest qualification and field</label><input id="advQual" type="text" maxlength="200" placeholder="e.g. PhD, Molecular Biology">
+      <label for="advExp">Your experience in a few lines</label><textarea id="advExp" maxlength="1500" placeholder="Roles, companies, what you can help founders with"></textarea>
+      <label for="advSigName">Type your full name to sign</label><input id="advSigName" type="text" required maxlength="100">
+      <label class="fee-agree"><input type="checkbox" id="advAccept"> <span id="advAcceptText">I have read and accept the advisory terms above.</span></label>
+      <div class="fee-btns"><button type="submit" class="btn btn-ink" id="advSubmit">Sign and accept <span class="ar" aria-hidden="true">&#8599;</span></button><button type="button" class="btn btn-line" id="advCancel">Cancel</button></div>
+      <p class="note" id="advSignNote" role="status"></p>
+    </form>
+    <button type="button" class="fee-x" id="advX" aria-label="Close">&times;</button>
   </div>
 </div>
 <div class="privacy" id="privacy" role="region" aria-label="Privacy choices"><p>Can this site count your visit? It stores a random ID in your browser and records pages viewed and the site you came from, to see what helps founders. Nothing is recorded unless you say yes. <a href="privacy.html#storage">Cookie and storage policy</a></p><div class="pc-btns"><button type="button" class="btn btn-ink" id="consentYes">Accept</button><button type="button" class="btn btn-line" id="consentNo">Decline</button></div></div>
@@ -1095,6 +1214,71 @@ document.getElementById('yr').textContent = new Date().getFullYear();
         fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, body: body })
           .then(function () { finish('Your message has been sent. If you do not hear back within two days, please email telkar.megha24@gmail.com.', true); })
           .catch(function () { finish('Your message could not be sent. Please email telkar.megha24@gmail.com directly.', false); });
+      });
+  });
+
+  // ---------- advisor sign-up: pick industries and type, read the term sheet in a pop-up, sign ----------
+  var aForm = document.getElementById('advForm'), aBack = document.getElementById('advBack'), aBox = document.getElementById('advBox'),
+      aSign = document.getElementById('advSign'), aNote = document.getElementById('advNote'), sNote = document.getElementById('advSignNote');
+  if (!aForm || !aBack) return;
+  var INDS = Array.prototype.map.call(aForm.querySelectorAll('input[name=ind]'), function (c) { return c.value; });
+  var TYPES = ['Business Advisor', 'Technical Advisor'];
+  var aOpener = null, aType = '', aInds = [];
+  function aVal(id) { return (document.getElementById(id).value || '').trim(); }
+  function aBad(id, on) { var el = document.getElementById(id); if (on) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid'); }
+  function aClose() { aBack.hidden = true; document.body.style.overflow = ''; if (aOpener && aOpener.focus) aOpener.focus(); }
+  aForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    aInds = Array.prototype.map.call(aForm.querySelectorAll('input[name=ind]:checked'), function (c) { return c.value; }).filter(function (v) { return INDS.indexOf(v) > -1; });
+    var t = aForm.querySelector('input[name=atype]:checked'); aType = t && TYPES.indexOf(t.value) > -1 ? t.value : '';
+    if (!aInds.length) { aNote.textContent = 'Pick at least one industry.'; aForm.querySelector('input[name=ind]').focus(); return; }
+    if (!aType) { aNote.textContent = 'Choose Business Advisor or Technical Advisor.'; aForm.querySelector('input[name=atype]').focus(); return; }
+    aNote.textContent = '';
+    Array.prototype.forEach.call(aBack.querySelectorAll('.adv-terms'), function (ol) { ol.hidden = ol.getAttribute('data-terms') !== aType; });
+    document.getElementById('advTitle').textContent = (aType === 'Business Advisor' ? 'Business' : 'Technical') + ' Advisory Terms';
+    document.getElementById('advPicked').textContent = 'Industries: ' + aInds.join(', ');
+    document.getElementById('advAcceptText').textContent = 'I have read and accept the ' + (aType === 'Business Advisor' ? 'Business' : 'Technical') + ' Advisory Terms above.';
+    sNote.textContent = ''; aOpener = document.activeElement;
+    aBack.hidden = false; document.body.style.overflow = 'hidden';
+    aBox.querySelector('.adv-scroll').scrollTop = 0; aBox.querySelector('.adv-scroll').focus();
+  });
+  document.getElementById('advCancel').addEventListener('click', aClose);
+  document.getElementById('advX').addEventListener('click', aClose);
+  aBack.addEventListener('click', function (e) { if (e.target === aBack) aClose(); });
+  document.addEventListener('keydown', function (e) {
+    if (aBack.hidden) return;
+    if (e.key === 'Escape') { aClose(); return; }
+    if (e.key === 'Tab') { var f = Array.prototype.filter.call(aBox.querySelectorAll('a[href],button:not([disabled]),input:not([tabindex="-1"]),textarea,[tabindex="0"]'), function (x) { return x.offsetParent !== null; });
+      var a = f[0], z = f[f.length - 1]; if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); } else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); } }
+  });
+  aSign.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (aVal('advWebsite')) { aClose(); aForm.reset(); aSign.reset(); aNote.textContent = 'Thank you. Your details have been received.'; return; }
+    var name = aVal('advName').slice(0, 100), email = aVal('advEmail').slice(0, 150), sig = aVal('advSigName').slice(0, 100);
+    var li = aVal('advLinkedin').slice(0, 200); if (li && !/^https?:\/\//i.test(li)) li = 'https://' + li;
+    var okEmail = /^[^\s@<>"']+@[^\s@<>"']+\.[a-z]{2,}$/i.test(email), acc = document.getElementById('advAccept').checked;
+    aBad('advName', !name); aBad('advEmail', !okEmail); aBad('advSigName', !sig);
+    if (!name || !okEmail || !sig) { sNote.textContent = 'Enter your name, a valid email and your typed signature.'; (aSign.querySelector('[aria-invalid=true]') || aSign).focus(); return; }
+    if (!acc) { sNote.textContent = 'Tick the box to accept the terms.'; document.getElementById('advAccept').focus(); return; }
+    var d = { token: TOKEN, type: 'advisor', t: new Date().toISOString(), name: name, email: email, linkedin: li, phone: aVal('advPhone').slice(0, 30),
+              advisorType: aType, industries: aInds, qualification: aVal('advQual').slice(0, 200), experience: aVal('advExp').slice(0, 1500),
+              signature: sig, accepted: true, url: pageUrl };
+    var btn = document.getElementById('advSubmit'); btn.disabled = true; sNote.textContent = 'Sending...';
+    var done = function (m, good) {
+      btn.disabled = false;
+      if (good) { aClose(); aSign.reset(); aForm.reset(); aNote.textContent = m; ev('advisor_signup', aType, 'advisors'); } else { sNote.textContent = m; }
+    };
+    var body = JSON.stringify(d);
+    fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, body: body })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j && j.ok) done('Thank you for signing. ' + (j.emailed ? 'A confirmation is on its way to your inbox, and ' : '') + 'Megha will email you to set up a call about compensation.', true);
+        else done('Your acceptance could not be saved. Please email telkar.megha24@gmail.com directly.', false);
+      })
+      .catch(function () {
+        fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, body: body })
+          .then(function () { done('Thank you for signing. Megha will email you to set up a call about compensation.', true); })
+          .catch(function () { done('Your acceptance could not be sent. Please email telkar.megha24@gmail.com directly.', false); });
       });
   });
 })();
@@ -1375,7 +1559,14 @@ document.getElementById('yr').textContent = new Date().getFullYear();
   function isBooking(){var r=document.getElementById('role');return !r||r.value==='Founder'||r.value==='Other';}
   window.__feeGate=function(go){if(!isBooking()||agreed())return true;if(go!==null)open(go);return false;};
   var inv=document.getElementById('feeInv');if(inv)inv.addEventListener('click',function(){back.hidden=true;document.body.style.overflow='';});
-  // "Join the investor network" pre-fills the form for an investor
+  // "Join the investor network" opens the investor Google Form once its link is set here;
+  // until then it pre-fills the contact form for an investor
+  var INVESTOR_FORM_URL = '';
+  var invBtn = document.getElementById('invJoin');
+  if (invBtn && /^https:\/\/(docs\.google\.com\/forms\/|forms\.gle\/)/.test(INVESTOR_FORM_URL)) {
+    invBtn.href = INVESTOR_FORM_URL; invBtn.target = '_blank'; invBtn.rel = 'noopener'; invBtn.removeAttribute('data-role');
+  }
+  // investor fallback: pre-fill the contact form
   document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-role]');if(!a)return;
     var r=document.getElementById('role');if(r)r.value=a.getAttribute('data-role');
     var c=form.querySelector('input[name=svc][value="Investor partnership"]');if(c)c.checked=true;
